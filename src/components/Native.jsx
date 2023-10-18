@@ -24,7 +24,7 @@ const GameCard = ({ index, str, url, play, description, tags }) => {
           <img
             src={url}
             alt="project_image"
-            className="w-full h-full object-fill rounded-2xl image1"
+            className="w-full h-full object-fill rounded-2xl"
           />
 
           <div className="absolute inset-0 flex justify-end m-3 card-img_hover">

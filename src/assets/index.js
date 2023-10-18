@@ -93,6 +93,7 @@ import amazonclone from "./Web/amazon-clone.png";
 import carRental from "./Web/Car-rental.png";
 import magento from "./company/magento.png";
 import sql from "./tech/SQL.png";
+import portfolio from "./Web/portfolio.png";
 
 export {
   logo,
@@ -185,4 +186,5 @@ export {
   carRental,
   magento,
   sql,
+  portfolio,
 };

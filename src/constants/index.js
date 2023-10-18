@@ -81,6 +81,7 @@ import {
   carRental,
   magento,
   sql,
+  portfolio,
 } from "../assets";
 
 export const navLinks = [
@@ -462,7 +463,7 @@ const projects = [
         color: "blue-text-gradient",
       },
       {
-        name: "mongodb",
+        name: "reactstrap",
         color: "green-text-gradient",
       },
       {
@@ -475,30 +476,30 @@ const projects = [
       "https://car-rental-kt8164f1f-prakhar-kumars-projects.vercel.app",
   },
   {
-    name: "Job IT",
+    name: "Portfolio",
     description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+      "collection of an individual's best work samples and achievements, often used to showcase skills and experience to potential employers or clients.",
     tags: [
       {
         name: "react",
         color: "blue-text-gradient",
       },
       {
-        name: "restapi",
+        name: "threejs",
         color: "green-text-gradient",
       },
       {
-        name: "scss",
+        name: "tailwind css",
         color: "pink-text-gradient",
       },
     ],
-    image: jobit,
-    source_code_link: "https://github.com/",
+    image: portfolio,
+    source_code_link: "https://prakhar-portfolio-84.netlify.app/",
   },
   {
     name: "Amazon Clone",
     description:
-      "Deals with add to cart,remove from cart, business logic to calculate orders and proceed to checkout.",
+      "Deals with add to cart,remove from cart, business logic to calculate orders and proceed to checkout. Created to look like original amazon website.",
     tags: [
       {
         name: "Reactjs",
