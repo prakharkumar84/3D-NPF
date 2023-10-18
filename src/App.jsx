@@ -23,7 +23,6 @@ function App() {
   const [isWeb, setIsWeb] = useState(false);
   const [isNative, setIsNative] = useState(false);
   const [isGame, setIsGame] = useState(false);
-  // console.log(isAnimation, isWeb, isNative, isGame);
 
   return (
     <BrowserRouter>

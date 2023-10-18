@@ -96,7 +96,7 @@ const Types = ({
                 React JS
               </h3>
               <button
-                className="w-[100px] green-pink-gradient p-[1px] rounded-[10px] shadow-card bg-tertiary border "
+                className="w-[100px] green-pink-gradient p-[1px] rounded-[5px] shadow-card bg-tertiary border "
                 onClick={handleWebPress}
               >
                 Check
@@ -105,11 +105,11 @@ const Types = ({
                 {isWeb && (
                   <div className=" flex flex-row justify-center items-center">
                     <div className=" flex flex-row justify-center items-center">
-                      <p>Scroll Down</p>
+                      <p className="font-bold">Scroll Down</p>
                     </div>
-                    <div className=" h-[40px] w-[20px] rounded-2xl ml-5 mt-3">
+                    <div className=" h-[40px] w-[20px] rounded-2xl ml-5 flex items-center">
                       <img
-                        className="h-[30px] w-[20px] rounded-2xl"
+                        className="h-[20px] w-[20px] rounded-2xl"
                         src={arrow}
                       ></img>
                     </div>
@@ -144,7 +144,7 @@ const Types = ({
                 React Native
               </h3>
               <button
-                className="w-[100px] green-pink-gradient p-[1px] rounded-[10px] shadow-card bg-tertiary border "
+                className="w-[100px] green-pink-gradient p-[1px] rounded-[5px] shadow-card bg-tertiary border "
                 onClick={handleNativePress}
               >
                 Check
@@ -153,11 +153,11 @@ const Types = ({
                 {isNative && (
                   <div className=" flex flex-row justify-center items-center">
                     <div className=" flex flex-row justify-center items-center">
-                      <p>Scroll Down</p>
+                      <p className="font-bold">Scroll Down</p>
                     </div>
-                    <div className=" h-[40px] w-[20px] rounded-2xl ml-5 mt-3">
+                    <div className=" h-[40px] w-[20px] rounded-2xl ml-5 flex items-center">
                       <img
-                        className="h-[30px] w-[20px] rounded-2xl"
+                        className="h-[20px] w-[20px] rounded-2xl"
                         src={arrow}
                       ></img>
                     </div>
@@ -192,7 +192,7 @@ const Types = ({
                 Games
               </h3>
               <button
-                className="w-[100px] green-pink-gradient p-[1px] rounded-[10px] shadow-card bg-tertiary border "
+                className="w-[100px] green-pink-gradient p-[1px] rounded-[5px] shadow-card bg-tertiary border "
                 onClick={handleGamePress}
               >
                 Check
@@ -201,11 +201,11 @@ const Types = ({
                 {isGame && (
                   <div className=" flex flex-row justify-center items-center">
                     <div className=" flex flex-row justify-center items-center">
-                      <p>Scroll Down</p>
+                      <p className="font-bold">Scroll Down</p>
                     </div>
-                    <div className=" h-[40px] w-[20px] rounded-2xl ml-5 mt-3">
+                    <div className=" h-[40px] w-[20px] rounded-2xl ml-5 flex items-center">
                       <img
-                        className="h-[30px] w-[20px] rounded-2xl"
+                        className="h-[20px] w-[20px] rounded-2xl"
                         src={arrow}
                       ></img>
                     </div>
@@ -240,7 +240,7 @@ const Types = ({
                 Animation / Graphics
               </h3>
               <button
-                className="w-[100px] green-pink-gradient p-[1px] rounded-[10px] shadow-card bg-tertiary border "
+                className="w-[100px] green-pink-gradient p-[1px] rounded-[5px] shadow-card bg-tertiary border "
                 onClick={handleAnimationPress}
               >
                 Check
@@ -249,11 +249,11 @@ const Types = ({
                 {isAnimation && (
                   <div className=" flex flex-row justify-center items-center">
                     <div className=" flex flex-row justify-center items-center">
-                      <p>Scroll Down</p>
+                      <p className="font-bold">Scroll Down</p>
                     </div>
-                    <div className=" h-[40px] w-[20px] rounded-2xl ml-5 mt-3">
+                    <div className=" h-[40px] w-[20px] rounded-2xl ml-5 flex items-center">
                       <img
-                        className="h-[30px] w-[20px] rounded-2xl"
+                        className="h-[20px] w-[20px] rounded-2xl"
                         src={arrow}
                       ></img>
                     </div>

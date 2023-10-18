@@ -80,6 +80,7 @@ import {
   amazonclone,
   carRental,
   magento,
+  sql,
 } from "../assets";
 
 export const navLinks = [
@@ -146,7 +147,7 @@ const technologies = [
     icon: reactjs,
   },
   {
-    name: "Redux Toolkit",
+    name: "Redux",
     icon: redux,
   },
   {
@@ -154,8 +155,8 @@ const technologies = [
     icon: tailwind,
   },
   {
-    name: "MongoDB",
-    icon: mongodb,
+    name: "SQL",
+    icon: sql,
   },
   {
     name: "Three JS",
@@ -254,8 +255,8 @@ const experiences = [
     iconBg: "#383E56",
     date: "May 2023",
     points: [
-      "• Developed custom scripts and UI for automated purchase order date reminders.",
-      "• Created custom scripts and UIto facilitate document transfer via APIs between internal servers and document management servers for customers.",
+      "Developed custom scripts and UI for automated purchase order date reminders.",
+      "Created custom scripts and UIto facilitate document transfer via APIs between internal servers and document management servers for customers.",
       "Worked on workflows and XSLT development,involving SQL for workflow parameters, data retrieval, and creating XSLT mappings, alongside Web Service creation and API calls for data updates in LN.",
     ],
     tags: [
