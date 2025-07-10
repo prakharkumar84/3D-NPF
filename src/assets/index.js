@@ -91,7 +91,7 @@ import travellers from "./Native/travellers.png";
 import calender from "./Native/calender.png";
 import amazonclone from "./Web/amazon-clone.png";
 import carRental from "./Web/Car-rental.png";
-import magento from "./company/magento.png";
+import magento from "./company/Magento.png";
 import sql from "./tech/SQL.png";
 import portfolio from "./Web/portfolio.png";
 import rave_l from "./feedback/Rave_Lavanya.png";
