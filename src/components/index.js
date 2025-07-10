@@ -17,6 +17,7 @@ import Types from "./Types";
 import Web from "./Web";
 import Game from "./Game";
 import Native from "./Native";
+import Awards from "./Awards";
 export {
   Hero,
   Navbar,
@@ -35,4 +36,5 @@ export {
   Web,
   Game,
   Native,
+  Awards,
 };

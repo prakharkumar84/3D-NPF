@@ -94,6 +94,27 @@ import carRental from "./Web/Car-rental.png";
 import magento from "./company/magento.png";
 import sql from "./tech/SQL.png";
 import portfolio from "./Web/portfolio.png";
+import rave_l from "./feedback/Rave_Lavanya.png";
+import rave_s from "./feedback/Rave_Samatha.png";
+import rave_b from "./feedback/Rave_Balaji.png";
+import rave_sh from "./feedback/Rave_Shanta.png";
+import rave_rk from "./feedback/Rave_RK.png";
+import sprint_1 from "./award/sprinter.png";
+import sprint_2 from "./award/sprinter2.png";
+import champ1 from "./award/champ.png";
+import champ2 from "./award/champ1.png";
+import aml from "./projects/aml.png";
+import bluebird from "./projects/bluebird.png";
+import boskalis from "./projects/Boskalis.png";
+import goashipyard from "./projects/gsl.png";
+import norland from "./projects/norland.png";
+import rpa from "./projects/rpa.png";
+import TLD from "./projects/TLD.png";
+import igus from "./projects/igus.png";
+import Ferrari from "./projects/Ferrari.png";
+import Escatec from "./projects/Escatec.png";
+import inglass from "./projects/inglass.jpg";
+import Packsize from "./projects/Packsize.png";
 
 export {
   logo,
@@ -187,4 +208,25 @@ export {
   magento,
   sql,
   portfolio,
+  rave_l,
+  rave_b,
+  rave_rk,
+  rave_s,
+  rave_sh,
+  sprint_1,
+  sprint_2,
+  champ1,
+  champ2,
+  aml,
+  bluebird,
+  boskalis,
+  goashipyard,
+  norland,
+  rpa,
+  TLD,
+  igus,
+  Ferrari,
+  Escatec,
+  inglass,
+  Packsize,
 };

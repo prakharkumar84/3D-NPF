@@ -15,6 +15,7 @@ import {
   Web,
   Native,
   Game,
+  Awards,
 } from "./components";
 import { useState } from "react";
 
@@ -49,8 +50,8 @@ function App() {
         {isAnimation && <Animation />}
         {isGame && <Game />}
         <Experience />
-
-        {/* <Feedbacks /> */}
+        <Feedbacks />
+        <Awards />
         <div className=" relative z-0">
           <Contact />
           <StarsCanvas />

@@ -82,7 +82,100 @@ import {
   magento,
   sql,
   portfolio,
+  rave_l,
+  rave_b,
+  rave_rk,
+  rave_s,
+  rave_sh,
+  sprint_1,
+  sprint_2,
+  champ1,
+  champ2,
+  aml,
+  bluebird,
+  norland,
+  rpa,
+  boskalis,
+  goashipyard,
+  Packsize,
+  inglass,
+  Escatec,
+  igus,
+  TLD,
+  Ferrari,
 } from "../assets";
+import { i } from "maath/dist/triangle-b62b9067.esm";
+
+export const info_data = {
+  Animation: {
+    id: "Animations",
+    text: "Feel free to check my work in animation . I have been following 3d animation from last 2 years while pursuing my Btech. I am fairly experienced in 3D modelling , texturing , rigging and animating models. I use blender as my main software for modelling as its free and I also know my way around autodesk maya which is a industry standard . I use photoshop and gimp for textures and colors for my projects.",
+    skills: [
+      "Blender",
+      "Autodesk Maya",
+      "Photoshop",
+      "Gimp",
+      "3D Modelling",
+      "Animation",
+      "Rigging",
+    ],
+  },
+  Game: {
+    id: "Game Projets",
+    text: "Feel free to check my projects in game development.I started designing games fairly recently , i currently handle the level designing,modelling and animation part of a game project. I use unity for game designs and blender for 3d models and animation. Photoshop and gimp are used for making sprites for 2D or 3D games .",
+    skills: [
+      "Unity Engine",
+      "Autodesk Maya",
+      "Blender",
+      "C#",
+      "Material Design",
+      "Unreal engine",
+    ],
+  },
+  Web: {
+    id: "Web Projects",
+    text: "Feel free to check my work in web developent. ",
+  },
+  LN: {
+    id: "LN ERP Technical Projects",
+    text: "Explore some of my work focused on Infor LN ERP. I have hands-on experience in designing and implementing BODs, APIs in LN , workflows from OCM, and rest api development. My expertise spans across LN customizations all components and integrating third-party systems like PayPal, Salesforce and Proship etc with LN ERP. These projects demonstrate my ability to build scalable, efficient, and business-aligned ERP solutions that deliver tangible value to clients.",
+
+    skills: [
+      "LN Studio 3GL/4GL Scripting",
+      "LN Customizations & Extensions",
+      "Business Object Documents (BOD's),BDE’s",
+      "BOD Extensions",
+      "Rest API Development",
+      "inContext Libraries",
+      "Object Configuration Management(OCM)",
+      "Document Output Management",
+      "LN Custom component Development",
+    ],
+  },
+  OS: {
+    id: "Infor OS Projects",
+    text: "Explore some of my work focused on Infor LN ERP and ION integrations. I have hands-on experience in designing and implementing BODs, APIs, workflows, and automation tools tailored to real-world manufacturing and automotive industry use cases. My expertise spans across LN customizations, ION API Gateway, IDM document automation, and integrating third-party systems like PayPal and Proship with LN. These projects demonstrate my ability to build scalable, efficient, and business-aligned ERP solutions that deliver tangible value to clients.",
+    skills: [
+      "Infor ION",
+      "ION API Gateway",
+      "Infor Document Management (IDM)",
+      "Infor Document Processor (IDP)",
+      "LN Transfer Service",
+      "Infor App Designer",
+      "Infor Data Lake",
+      "Robotic Process Automation (RPA)",
+      "Python Scripting",
+    ],
+  },
+  About: {
+    id: "About Me",
+    text: "Adaptable and results-focused Consultant with 3 years of experience, eager to bring technical and functional expertise to Infor to generate meaningful business value. Proficient in Infor LN Tools and Technologies, with hands-on work in Extensions, Integrations, and ION-driven solutions. A fast learner, innovative thinker, and problem-solver, known for analytical sharpness and dedication to client satisfaction. Driven to support creative solutions and thrive in a collaborative, fast-paced team environment.",
+  },
+  projects: {
+    id: "Projects",
+    text: "Explore my projects that showcase my skills and experience through real-world examples of my work. Each project is briefly described with links to code repositories and live demos. They reflect my ability to solve complex problems, work with different technologies, and manage projects effectively.",
+  },
+};
 
 export const navLinks = [
   {
@@ -101,23 +194,31 @@ export const navLinks = [
     id: "projects",
     title: "Projects",
   },
+  {
+    id: "Feedbacks",
+    title: "Feedbacks",
+  },
+  {
+    id: "Awards",
+    title: "Awards",
+  },
 ];
 
 const services = [
   {
     id: 1,
-    title: "Web Developer",
-    icon: web,
+    title: "LN ERP Technical Consultant",
+    icon: infor,
   },
   {
     id: 2,
-    title: "React Native Developer",
-    icon: mobile,
+    title: "Infor OS Consultant",
+    icon: infor,
   },
   {
     id: 3,
-    title: "Game Developer",
-    icon: backend,
+    title: "Web Developer",
+    icon: web,
   },
   {
     id: 4,
@@ -128,46 +229,45 @@ const services = [
 
 const technologies = [
   {
-    name: "HTML 5",
-    icon: html,
+    name: "4gl",
+    icon: infor,
   },
   {
-    name: "CSS 3",
-    icon: css,
+    name: "Rest APIs",
+    icon: infor,
+  },
+  {
+    name: "Soap APIs",
+    icon: infor,
+  },
+  {
+    name: "IDM",
+    icon: infor,
+  },
+  {
+    name: "IDP",
+    icon: infor,
+  },
+  {
+    name: "Infor RPA",
+    icon: infor,
+  },
+  {
+    name: "API Gateway",
+    icon: infor,
+  },
+  {
+    name: "Infor ION",
+    icon: infor,
   },
   {
     name: "JavaScript",
     icon: javascript,
   },
   {
-    name: "TypeScript",
-    icon: typescript,
-  },
-  {
-    name: "React JS",
-    icon: reactjs,
-  },
-  {
-    name: "Redux",
-    icon: redux,
-  },
-  {
-    name: "Tailwind CSS",
-    icon: tailwind,
-  },
-  {
     name: "SQL",
     icon: sql,
   },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-
   {
     name: "python",
     icon: python,
@@ -177,7 +277,7 @@ const technologies = [
 const company = [
   {
     id: 1,
-    title: "Associate Technical Consultant",
+    title: "Technical Consultant",
     company_name: "Infor India PVT LTD",
     icon: infor,
     iconBg: "#383E56",
@@ -196,31 +296,49 @@ const company = [
 
 const experiences = [
   {
-    title: "Infor Mingle Cloudsuite Portal V2",
-    company_name: "Infor (Hyderabad: Offsite)",
+    title: "LN & ION Integration Developer",
+    company_name: "Infor (Manufacturing Industry Projects)",
     icon: infor,
     iconBg: "#383E56",
-    date: "dec 2022",
+    date: "Jan 2022 – Present",
     points: [
-      "Created interactive analytic view using React, incorporating graphs and pie charts to provide comprehensive data visualization.",
-      "Integrated microservices and workspaces into dropdown menu within the widget drawer using React.js and Material‑UI, stream‑lining access and navigation for users.",
-      "Implemented efficient search functionality utilizing debouncing techniques, enhancing the user experience and optimizing the search process.",
-      "Integrated API functionality to dynamically add additional workspaces as menu options within the widget box, facilitating a flexible and scalable user interface.",
-      "Developed a tabular view feature to display data in a structured format, enhancing data readability and accessibility for end-users.",
+      "Designed and customized BODs, BDEs, and Extensions to meet specific customer requirements and improve system performance.",
+      "Planned, configured, and deployed Infor ION Workflows and APIs to enable seamless enterprise-wide integrations.",
+      "Implemented scalable integration models aligned with complex manufacturing operations and business goals.",
+      "Provided mission-critical LN and ION support during customer Go-Live phases, ensuring quick issue resolution.",
+      "Utilized ION API’s Backend as a Service to design and deploy custom REST APIs through the ION API Gateway.",
+      "Expanded the IPH library with reusable, high-impact assets across LN, ION, and open-source tools.",
+      "Built and optimized external utilities for IDM and ION, saving over 100 hours in processing time during customer cutover.",
+      "Integrated PayPal credit card payments into LN using PayPal APIs and webhooks for secure transaction processing.",
+      "Customized standard tools to meet unique business needs, significantly improving development timelines.",
+      "Integrated LN with third-party Proship system to enable API-based report printing for OutboundOrderLine activities.",
     ],
     tags: [
-      {
-        name: "Reactjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "SQL",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Javascript",
-        color: "pink-text-gradient",
-      },
+      { name: "Infor LN", color: "blue-text-gradient" },
+      { name: "ION API", color: "green-text-gradient" },
+      { name: "IDM", color: "pink-text-gradient" },
+      { name: "REST APIs", color: "orange-text-gradient" },
+      { name: "PayPal API", color: "blue-text-gradient" },
+    ],
+  },
+  {
+    title: "Automation & Integration Engineer",
+    company_name: "Infor (Automotive Industry Projects)",
+    icon: infor,
+    iconBg: "#383E56",
+    date: "Jan 2021 – Dec 2022",
+    points: [
+      "Built and deployed RPA solutions for automating file-handling and business tasks such as warehouse receipts and packing slips using Intelligent Document Processing (IDP).",
+      "Developed a scalable interface to streamline end-to-end customer order fulfillment, enhancing operational accuracy and speed.",
+      "Created Python-based utilities for batch IDM updates and seamless API suite/ION component migrations across environments.",
+      "Utilized IDP to extract structured data from unstructured documents, significantly improving workflow reliability and speed.",
+    ],
+    tags: [
+      { name: "RPA", color: "blue-text-gradient" },
+      { name: "Python", color: "green-text-gradient" },
+      { name: "IDP", color: "pink-text-gradient" },
+      { name: "IDM", color: "orange-text-gradient" },
+      { name: "ION API", color: "blue-text-gradient" },
     ],
   },
   {
@@ -257,7 +375,7 @@ const experiences = [
     date: "May 2023",
     points: [
       "Developed custom scripts and UI for automated purchase order date reminders.",
-      "Created custom scripts and UIto facilitate document transfer via APIs between internal servers and document management servers for customers.",
+      "Created custom scripts and UI to facilitate document transfer via APIs between internal servers and document management servers for customers.",
       "Worked on workflows and XSLT development,involving SQL for workflow parameters, data retrieval, and creating XSLT mappings, alongside Web Service creation and API calls for data updates in LN.",
     ],
     tags: [
@@ -428,30 +546,75 @@ const experiences = [
 const testimonials = [
   {
     testimonial:
-      "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-    name: "Sara Lee",
-    designation: "CFO",
-    company: "Acme Co",
-    image: "https://randomuser.me/api/portraits/women/4.jpg",
+      "Prakhar has excellent technical knowledge. He is quick in his tasks, never keeps us wait. Good attitude w.r.t work and colleagues.",
+    name: "Samatha Daduwai",
+    designation: "Principal Consultant",
+    company: "Infor India Pvt Ltd",
+    email: "Samatha.Daduwai@infor.com",
+    image: rave_s,
   },
   {
     testimonial:
-      "I've never met a web developer who truly cares about their clients' success like Rick does.",
-    name: "Chris Brown",
-    designation: "COO",
-    company: "DEF Corp",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
+      "Prakhar has done a great job with the Boskalis IDM migration activity. When Boskalis came up with changes on top of huge number of migrated documents, he was able to come up with a solution to update, which is faster than the standard import utility. He has displayed good communication skills during the project. It was a pleasure working with Prakhar.After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
+    name: "Shantaram Yadathore",
+    designation: "Solution Architect",
+    company: "Infor India Pvt Ltd",
+    email: "Shantaram.Yadathore@infor.com",
+    image: rave_sh,
   },
   {
     testimonial:
-      "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Lisa Wang",
-    designation: "CTO",
-    company: "456 Enterprises",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
+      "Prakhar did a fantastic job in CMR by developing a python script in a short time and helping the customer in a challenging situation.",
+    name: "Lavanya Tanikella",
+    designation: "Team Lead, Consulting",
+    company: "Infor India Pvt Ltd",
+    email: "Lavanya.Tanikella@infor.com",
+    image: rave_l,
+  },
+  {
+    testimonial:
+      "Prakhar deserves a recognition for taking ownership of the deliverables he handled across multiple projects PI, Canam, Keystone etc Apart from possessing a sound knowledge in different areas, he finishes his deliverables faster (within the time allotted) with very good quality and takes it to a logical end. He also analyses well and does good R&D in new areas.",
+    name: "Balaji Padmanabhan",
+    designation: "Solution Architect",
+    company: "Infor India Pvt Ltd",
+    email: "Balaji.Padmanabhan@infor.com",
+    image: rave_b,
+  },
+
+  {
+    testimonial:
+      "Hi Prakhar, I wanted to take a moment to express my sincere appreciation for the excellent job you are doing on the Igus US project. Your dedication, hard work, and attention to detail have truly been exceptional, and have made a significant contribution towards the success of the project. I have been consistently impressed with your ability to handle the challenges and complexities that have arisen throughout the project. Your willingness to go above and beyond to ensure that everything is done right has been truly invaluable. Your contributions have not gone unnoticed, and I want to thank you for your exceptional work. You have been an integral part of the team and have helped us to achieve our goals. Thank you again for your outstanding performance, and I look forward to continuing to work in the same flow throughout the project. Best regards, Rajashree Kadam Project Manager.",
+    name: "Rajashree Kadam",
+    designation: "Project Manager",
+    company: "Infor India Pvt Ltd",
+    email: "Rajashree.kadam@infor.com",
+    image: rave_rk,
   },
 ];
 
+export const awards = [
+  {
+    id: 1,
+    category: "Sprinter",
+    image: sprint_1,
+  },
+  {
+    id: 2,
+    category: "Sprinter",
+    image: sprint_2,
+  },
+  {
+    id: 3,
+
+    category: "Champion",
+    image: champ1,
+  },
+  {
+    id: 4,
+    category: "Champion",
+    image: champ2,
+  },
+];
 const projects = [
   {
     name: "Car Rent",
@@ -760,6 +923,274 @@ const game = [
     ],
   },
 ];
+
+export const LN_projects = [
+  {
+    id: 1,
+    company: "Igus",
+    url: igus,
+    description:
+      "Implemented PayPal, Proship, and Salesforce integrations in LN, involving deep customization using 4GL and BDEs for a fully automated and user-friendly ERP experience.",
+    points: [
+      "@For PayPal",
+      "Created custom tables, parameter sessions, BDEs, and API calls from 4GL for PayPal integration.",
+      "Personalized LN forms and added customer-defined fields to handle PayPal-specific data.",
+      "Created PayPal checkout order from LN Sales Order and generated a payment link.",
+      "Captured PayPal webhooks in LN and saved transaction data into custom tables.",
+      "Enabled real-time payment via PayPal and captured amount during LN invoicing.",
+      "@For Proship",
+      "Developed custom tables, BDEs, and forms for API integration between LN and Proship.",
+      "Sent LN outbound shipment reports to Proship printer via API calls.",
+      "Automated freezing and confirming of shipments via Proship API.",
+      "Added shipment cost lines to LN Sales Order and released them to invoicing automatically.",
+      "Implemented automatic release of blocked Sales Orders based on shipment status.",
+      "@For Salesforce",
+      "Integrated Salesforce with LN for syncing Business Partners and Sales Orders.",
+    ],
+    tags: [
+      { name: "4GL", color: "blue-text-gradient" },
+      { name: "BDE", color: "green-text-gradient" },
+      { name: "Rest APIs", color: "pink-text-gradient" },
+      { name: "SOAP APIs", color: "orange-text-gradient" },
+      { name: "DAL", color: "green-text-gradient" },
+    ],
+  },
+  {
+    id: 2,
+    company: "Inglass",
+    url: inglass,
+    description:
+      "Created custom BODs and automated quote-to-order workflows to streamline item and sales order processing.",
+    points: [
+      "Developed standard and custom BODs for Sales Quote to Sales Order conversion.",
+      "Built a custom BOD to create multiple items simultaneously, improving efficiency.",
+      "Integrated custom BOD with standard ItemMaster BOD for unified processing.",
+      "Executed standard BODs from within custom BODs for modular business logic.",
+    ],
+    tags: [
+      { name: "4GL", color: "blue-text-gradient" },
+      { name: "DAL", color: "green-text-gradient" },
+      { name: "BOD", color: "pink-text-gradient" },
+    ],
+  },
+  {
+    id: 3,
+    company: "Aston Martin(AML)",
+    url: aml,
+    description:
+      "Automated the uploading of documents from LN File Manager to IDM using custom sessions and processing utilities.",
+    points: [
+      "Built automated utility to upload documents from LN File Manager to IDM.",
+      "Created new processing sessions to handle a range of documents in batch.",
+      "Ensured integration reliability between LN document flows and IDM storage.",
+    ],
+    tags: [
+      { name: "4GL", color: "blue-text-gradient" },
+      { name: "Rest APIs", color: "green-text-gradient" },
+      { name: "IDM", color: "pink-text-gradient" },
+    ],
+  },
+  {
+    id: 4,
+    company: "ESCATEC (Malaysia)",
+    url: Escatec,
+    description:
+      "Connected LN ERP with Malaysia’s e-invoicing portal, enabling digital compliance including QR and digital signature.",
+    points: [
+      "Integrated LN with Malaysia’s e-invoicing tax portal for digital compliance.",
+      "Implemented digital signature functionality required for submitted invoices.",
+      "Generated QR code after successful submission and printed it on LN invoice.",
+    ],
+    tags: [
+      { name: "4GL", color: "blue-text-gradient" },
+      { name: "Rest APIs", color: "green-text-gradient" },
+      { name: "Reports", color: "pink-text-gradient" },
+    ],
+  },
+  {
+    id: 5,
+    company: "TLD",
+    url: TLD,
+    description:
+      "Repurposed and extended standard BDE logic for custom stock calculations and process automation.",
+    points: [
+      "Modified standard BDE for Stock Availability to include custom business logic.",
+      "Repackaged it as a custom BDE to meet TLD’s specific inventory needs.",
+      "Invoked standard BDE inside custom BDE to reuse and extend existing functionality.",
+    ],
+    tags: [
+      { name: "4GL", color: "blue-text-gradient" },
+      { name: "Rest APIs", color: "green-text-gradient" },
+      { name: "BDE", color: "pink-text-gradient" },
+    ],
+  },
+  {
+    id: 6,
+    company: "Packsize",
+    url: Packsize,
+    description:
+      "Integrated LN ERP with CPQ system using SOAP API for real-time item and variant configuration.",
+    points: [
+      "Implemented CPQ integration by invoking SOAP-based CPQ APIs from LN.",
+      "Retrieved items and configuration variants and stored them in LN custom tables.",
+      "Mapped and parsed SOAP responses for seamless integration into LN screens.",
+    ],
+    tags: [
+      { name: "4GL", color: "blue-text-gradient" },
+      { name: "SOAP APIs", color: "green-text-gradient" },
+      { name: "BDE", color: "pink-text-gradient" },
+    ],
+  },
+  {
+    id: 7,
+    company: "Ferrari",
+    url: Ferrari,
+    description:
+      "Performed system uplift of BODs and custom code from FP7 to LN 10.8 to ensure compatibility and stability.",
+    points: [
+      "Upgraded custom LN BODs from Feature Pack 7 (FP7) to LN 10.8.",
+      "Adapted 4GL scripts and DAL logic to be compatible with LN 10.8 architecture.",
+      "Ensured all legacy extensions and customizations worked in upgraded environment.",
+    ],
+    tags: [{ name: "4GL", color: "blue-text-gradient" }],
+  },
+  {
+    id: 8,
+    company: "Bluebird",
+    url: bluebird,
+    description:
+      "Built end-to-end Salesforce integration for Business Partner, Order, and Invoice syncing from LN.",
+    points: [
+      "Integrated Salesforce with LN to sync Business Partner, Order, and Invoice data.",
+      "Developed and mapped REST API calls for real-time communication between systems.",
+      "Ensured data accuracy and system performance during high-volume syncing.",
+    ],
+    tags: [
+      { name: "4GL", color: "blue-text-gradient" },
+      { name: "Rest APIs", color: "green-text-gradient" },
+    ],
+  },
+];
+
+export const ION_projects = [
+  {
+    id: 1,
+    company: "Igus",
+    url: igus,
+    description:
+      "Implemented and exposed PayPal, Proship, and Salesforce APIs via ION API Gateway, with dataflows and workflows for seamless third-party integrations.",
+    points: [
+      "Set up all PayPal APIs in the ION API Gateway for LN integration.",
+      "Registered Proship and PayPal BDEs as REST APIs in the API Gateway.",
+      "Developed dataflows and workflows to integrate LN with third-party Concur.",
+      "Configured Salesforce APIs within the API Gateway for LN-Salesforce interaction.",
+    ],
+    tags: [
+      { name: "API Gateway", color: "blue-text-gradient" },
+      { name: "ION", color: "green-text-gradient" },
+    ],
+  },
+  {
+    id: 2,
+    company: "Boskalis",
+    url: boskalis,
+    description:
+      "Led migration of ION and IDM assets from single-tenant to multitenant cloud, building custom automation tools to accelerate the process.",
+    points: [
+      "Migrated ION configurations from single-tenant to multitenant cloud infrastructure.",
+      "Handled IDM document migration with validation and error resolution.",
+      "Fixed broken Dataflows, API suites, and connection points during cloud transition.",
+      "Built custom migration tools using Python, reducing manual work and saving over 3 weeks of effort.",
+    ],
+    tags: [
+      { name: "ION", color: "green-text-gradient" },
+      { name: "API Gateway", color: "blue-text-gradient" },
+      { name: "IDM", color: "pink-text-gradient" },
+      { name: "Python", color: "orange-text-gradient" },
+    ],
+  },
+  {
+    id: 3,
+    company: "Goa Shipyard Limited",
+    url: goashipyard,
+    description:
+      "Integrated supplier exchange with LN and IDM using custom tools, extensions, and secure authentication across all third-party apps.",
+    points: [
+      "Integrated supplier exchange platform with LN using ION dataflows.",
+      "Developed IDM utility to transfer documents between multiple IDM servers.",
+      "Built a custom Chrome Extension to mimic LN InContext document attachment inside Supplier Exchange.",
+      "Implemented Infor login authorization flow across all third-party apps for secure access.",
+      "Configured custom ION dataflows between LN and Supplier Exchange for various workflows.",
+    ],
+    tags: [
+      { name: "ION", color: "green-text-gradient" },
+      { name: "API Gateway", color: "blue-text-gradient" },
+      { name: "IDM", color: "pink-text-gradient" },
+      { name: "Python", color: "orange-text-gradient" },
+      { name: "Javascript", color: "blue-text-gradient" },
+      { name: "Chrome Extension", color: "green-text-gradient" },
+    ],
+  },
+  {
+    id: 4,
+    company: "Bluebird",
+    url: bluebird,
+    description:
+      "Enabled LN-to-Salesforce integration via ION using custom BDEs, dataflows, and API gateway configurations.",
+    points: [
+      "Created ION dataflows for Salesforce integration to enable LN-to-Salesforce data sync.",
+      "Set up Salesforce APIs in ION API Gateway.",
+      "Developed custom BDE to write Salesforce responses back into LN.",
+    ],
+    tags: [
+      { name: "ION", color: "green-text-gradient" },
+      { name: "API Gateway", color: "blue-text-gradient" },
+      { name: "Python", color: "orange-text-gradient" },
+    ],
+  },
+  {
+    id: 5,
+    company: "Norland",
+    url: norland,
+    description:
+      "Established LN-Spectrum integration and re-engineered OFX bank file processing via ION for streamlined project and financial workflows.",
+    points: [
+      "Integrated LN with Spectrum for syncing projects and activities with status updates.",
+      "Automated .ofx bank file retrieval from external server to LN via ION dataflows.",
+      "Re-engineered OFX file processing for fast and reliable financial data handling.",
+      "Developed reverse data integration to send error responses back from LN to customer servers.",
+    ],
+    tags: [
+      { name: "ION", color: "green-text-gradient" },
+      { name: "API Gateway", color: "blue-text-gradient" },
+      { name: "Python", color: "orange-text-gradient" },
+    ],
+  },
+  {
+    id: 6,
+    company: "RPA - Infor Standard Use Cases",
+    url: rpa,
+    description:
+      "Developed automation flows using ION, IDP, and RPA for LN processes like receipts and packing slips. Delivered reusable modules for Infor standard solutions.",
+    points: [
+      "Developed and released two standard use cases for RPA within the Infor ecosystem.",
+      "Automated unallocated receipts and packing slip processes in LN using RPA bots.",
+      "Implemented end-to-end flow using Infor Document Processor (IDP) for high-volume document automation.",
+      "Built LN integrations with RPA and IDP using API Gateway and ION dataflows.",
+    ],
+    tags: [
+      { name: "RPA", color: "blue-text-gradient" },
+      { name: "ION", color: "green-text-gradient" },
+      { name: "API Gateway", color: "pink-text-gradient" },
+      { name: "Python", color: "orange-text-gradient" },
+      { name: "IDP", color: "green-text-gradient" },
+      { name: "IDM", color: "blue-text-gradient" },
+      { name: "LN", color: "pink-text-gradient" },
+      { name: "VB.NET", color: "orange-text-gradient" },
+    ],
+  },
+];
+
 const native = [
   {
     id: 1,

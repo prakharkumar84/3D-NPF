@@ -87,13 +87,13 @@ const Types = ({
               className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
             >
               <img
-                src={services[0].icon}
+                src={services[2].icon}
                 alt="web-development"
                 className="w-16 h-16 object-contain"
               />
 
               <h3 className="text-white text-[20px] font-bold text-center">
-                React JS
+                Web Development
               </h3>
               <button
                 className="w-[100px] green-pink-gradient p-[1px] rounded-[5px] shadow-card bg-tertiary border "
@@ -141,7 +141,7 @@ const Types = ({
               />
 
               <h3 className="text-white text-[20px] font-bold text-center">
-                React Native
+                LN ERP Technical
               </h3>
               <button
                 className="w-[100px] green-pink-gradient p-[1px] rounded-[5px] shadow-card bg-tertiary border "
@@ -183,13 +183,13 @@ const Types = ({
               className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
             >
               <img
-                src={services[2].icon}
+                src={services[0].icon}
                 alt="web-development"
                 className="w-16 h-16 object-contain"
               />
 
               <h3 className="text-white text-[20px] font-bold text-center">
-                Games
+                Infor OS
               </h3>
               <button
                 className="w-[100px] green-pink-gradient p-[1px] rounded-[5px] shadow-card bg-tertiary border "
@@ -231,7 +231,7 @@ const Types = ({
               className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col "
             >
               <img
-                src={services[0].icon}
+                src={services[3].icon}
                 alt="web-development"
                 className="w-16 h-16 object-contain"
               />

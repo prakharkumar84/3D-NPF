@@ -9,7 +9,7 @@ import "react-vertical-timeline-component/style.min.css";
 import { styles } from "../styles";
 import { company, experiences } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { fadeIn} from "../utils/motion";
+import { fadeIn } from "../utils/motion";
 import { Tilt } from "react-tilt";
 
 const ExperienceCard = ({ experience }) => {
@@ -63,21 +63,13 @@ const ExperienceCard = ({ experience }) => {
 };
 
 const ServiceCard = ({ index, title, icon, company_name, date, points }) => (
-  <Tilt className="xs:w-[500px] w-full">
+  <div className="xs:w-[500px] w-full">
     <div
       // eslint-disable-next-line react/no-unknown-property
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
       className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
     >
-      <div
-        // eslint-disable-next-line react/no-unknown-property
-        options={{
-          max: 30,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col w-full"
-      >
+      <div className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col w-full">
         <img
           src={icon}
           alt="web-development"
@@ -112,7 +104,7 @@ const ServiceCard = ({ index, title, icon, company_name, date, points }) => (
         </ul>
       </div>
     </div>
-  </Tilt>
+  </div>
 );
 const Experience = () => {
   return (

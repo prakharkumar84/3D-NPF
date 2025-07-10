@@ -21,8 +21,7 @@ const Hero = () => {
           <p
             className={`relative ${styles.heroSubText} mt-2 text-white-100 z-10`}
           >
-            I develop 3D animations, user <br className="sm:block hidden" />
-            interfaces, android and web applications
+            I am a Techincal Consultant who does animation as a hobby.
           </p>
         </div>
       </div>

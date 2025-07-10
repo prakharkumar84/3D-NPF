@@ -1,27 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
-import { testimonials } from "../constants";
+import { awards } from "../constants";
 
-const FeedbackCard = ({
-  index,
-  testimonial,
-  name,
-  designation,
-  company,
-  image,
-  email,
-}) => {
+const Award = ({ index, category, image }) => {
   const [showModal, setShowModal] = useState(false);
   return (
     <motion.div
       variants={fadeIn("", "spring", index * 0.5, 0.75)}
       className="bg-slate-800 p-10 rounded-3xl xs:w-[320px] w-full"
     >
-      {/* Modal */}
       {showModal && (
         <div
           className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50"
@@ -52,16 +43,12 @@ const FeedbackCard = ({
               <img
                 src={image}
                 className="mb-3 w-50 h-50 rounded-lg hover:scale-x-105 transition-transform duration-300 cursor-zoom-in"
-                onClick={() => setShowModal(true)}
-                alt={name}
+                alt="image"
               />
             </p>
             <p className="text-white font-medium text-[16px]">
-              <span className="blue-text-gradient">@</span> {name}
+              <span className="blue-text-gradient">@</span> {category}
             </p>
-            <p className="mt-1 text-secondary text-[10px]">({email})</p>
-            <p className="mt-1 text-secondary text-[12px]">{designation}</p>
-            <p className="mt-1 text-secondary text-[12px]">{company}</p>
             {/* <p>
             <img src={image} className="w-50 h-50" />
           </p> */}
@@ -72,24 +59,24 @@ const FeedbackCard = ({
   );
 };
 
-const Feedbacks = () => {
+const Awards = () => {
   return (
     <div className={`mt-12 bg-black-100 rounded-[20px]`}>
       <div
         className={`bg-tertiary rounded-2xl ${styles.padding} min-h-[300px]`}
       >
         <motion.div variants={textVariant()}>
-          <p className={styles.sectionSubText}>What others say</p>
-          <h2 className={styles.sectionHeadText}>Testimonials</h2>
+          <p className={styles.sectionSubText}>What I received</p>
+          <h2 className={styles.sectionHeadText}>Awards</h2>
         </motion.div>
       </div>
       <div className={`-mt-20 pb-14 ${styles.paddingX} flex flex-wrap gap-7`}>
-        {testimonials.map((testimonial, index) => (
-          <FeedbackCard key={testimonial.name} index={index} {...testimonial} />
+        {awards.map((award, index) => (
+          <Award key={award.id} index={index} {...award} />
         ))}
       </div>
     </div>
   );
 };
 
-export default SectionWrapper(Feedbacks, "Feedbacks");
+export default SectionWrapper(Awards, "Awards");
