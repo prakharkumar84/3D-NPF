@@ -43,6 +43,7 @@ const Award = ({ index, category, image }) => {
               <img
                 src={image}
                 className="mb-3 w-50 h-50 rounded-lg hover:scale-x-105 transition-transform duration-300 cursor-zoom-in"
+                onClick={() => setShowModal(true)}
                 alt="image"
               />
             </p>
