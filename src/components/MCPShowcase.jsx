@@ -4,6 +4,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars, Float } from "@react-three/drei";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import codeGenPrompts from "../constants/codeGenPrompts";
 
 // ─── MCP Tool Demo Data ──────────────────────────────────────────────────────
 const mcpTools = [
@@ -12,42 +13,9 @@ const mcpTools = [
     title: "Code Generation",
     subtitle: "DAL, REST API, Extensions",
     description: "Generates production-ready 4GL code following all syntax rules, naming conventions, and best practices automatically.",
-    prompt: "Generate DAL for sales order with validation hooks and business methods",
-    code: `|function extern boolean dal.before.save.object(void)
-{
-    | Validate mandatory fields before save
-    if isspace(tdsls400.orno) then
-        dal.set.error.message("sls0400", 1,
-            "Order number is mandatory")
-        return(false)
-    endif
-
-    | Check credit limit
-    if not check.credit.limit(tdsls400.ofbp) then
-        dal.set.error.message("sls0400", 2,
-            "Credit limit exceeded for %1",
-            tdsls400.ofbp)
-        return(false)
-    endif
-
-    | Set audit fields
-    tdsls400.lmdt = utc.num()
-    tdsls400.lmby = logname$
-
-    return(true)
-}
-
-function extern long dal.field.orno.is.valid(
-    domain  tcorno  i.orno)
-{
-    | Validate order format
-    if len(strip$(str$(i.orno))) < 3 then
-        dal.set.field.error.message("sls0400",
-            "orno", 3, "Invalid order format")
-        return(DALHOOKERROR)
-    endif
-    return(DALHOOKNOACTION)
-}`,
+    prompt: codeGenPrompts[0].prompt,
+    code: codeGenPrompts[0].code,
+    hasDropdown: true,
   },
   {
     id: "knowledge-graph",
@@ -353,21 +321,29 @@ function useTypingEffect(text, speed = 15, isActive = false) {
   const [isComplete, setIsComplete] = useState(false);
   const indexRef = useRef(0);
   const intervalRef = useRef(null);
+  const speedRef = useRef(speed);
+  speedRef.current = speed;
 
-  const start = useCallback(() => {
-    if (intervalRef.current) return;
-    setIsComplete(false);
+  const startInterval = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
       if (indexRef.current < text.length) {
-        setDisplayedText(text.slice(0, indexRef.current + 1));
-        indexRef.current++;
+        // Type multiple chars per tick at high speeds
+        const charsPerTick = Math.max(1, Math.floor(15 / speedRef.current));
+        indexRef.current = Math.min(indexRef.current + charsPerTick, text.length);
+        setDisplayedText(text.slice(0, indexRef.current));
       } else {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
         setIsComplete(true);
       }
-    }, speed);
-  }, [text, speed]);
+    }, speedRef.current);
+  }, [text]);
+
+  const start = useCallback(() => {
+    setIsComplete(false);
+    startInterval();
+  }, [startInterval]);
 
   const pause = useCallback(() => {
     clearInterval(intervalRef.current);
@@ -381,6 +357,13 @@ function useTypingEffect(text, speed = 15, isActive = false) {
     setDisplayedText("");
     setIsComplete(false);
   }, []);
+
+  // Restart interval when speed changes (while active)
+  useEffect(() => {
+    if (isActive && !isComplete && intervalRef.current) {
+      startInterval();
+    }
+  }, [speed, isActive, isComplete, startInterval]);
 
   useEffect(() => {
     if (isActive) {
@@ -675,8 +658,8 @@ function TypingCharacterScene() {
 }
 
 // ─── IDE Terminal Component ──────────────────────────────────────────────────
-function IDETerminal({ code, isActive, title }) {
-  const { displayedText, isComplete } = useTypingEffect(code, 12, isActive);
+function IDETerminal({ code, isActive, title, speed = 12, isMaximized = false, onToggleMaximize }) {
+  const { displayedText, isComplete } = useTypingEffect(code, speed, isActive);
   const contentRef = useRef(null);
 
   useEffect(() => {
@@ -685,8 +668,8 @@ function IDETerminal({ code, isActive, title }) {
     }
   }, [displayedText]);
 
-  return (
-    <div className="rounded-xl overflow-hidden shadow-2xl shadow-[#915EFF]/10 border border-white/5">
+  const terminalContent = (
+    <div className={`rounded-xl overflow-hidden shadow-2xl shadow-[#915EFF]/10 border border-white/5 ${isMaximized ? "h-full flex flex-col" : ""}`}>
       {/* IDE Header */}
       <div className="bg-[#2d2d30] px-4 py-3 flex items-center gap-3">
         <div className="flex gap-2">
@@ -701,11 +684,20 @@ function IDETerminal({ code, isActive, title }) {
         {isComplete && (
           <span className="ml-auto text-[#27ca3f] text-[11px]">✓ complete</span>
         )}
+        {onToggleMaximize && (
+          <button
+            onClick={onToggleMaximize}
+            className="ml-2 text-white/70 hover:text-white text-[12px] sm:text-[13px] px-2 py-1 rounded bg-white/10 hover:bg-white/20 transition-colors"
+            title={isMaximized ? "Minimize" : "Maximize"}
+          >
+            {isMaximized ? "⊡ Minimize" : "⊞ Maximize"}
+          </button>
+        )}
       </div>
       {/* IDE Content */}
       <div
         ref={contentRef}
-        className="bg-[#1e1e1e] p-5 h-[420px] overflow-y-auto font-mono text-[13px] leading-relaxed"
+        className={`bg-[#1e1e1e] p-3 sm:p-5 overflow-y-auto font-mono text-[11px] sm:text-[13px] leading-relaxed ${isMaximized ? "flex-1" : "h-[280px] sm:h-[420px]"}`}
       >
         <pre className="text-[#d4d4d4] whitespace-pre-wrap">{displayedText}
           {!isComplete && isActive && <span className="animate-pulse text-[#915EFF]">▊</span>}
@@ -713,6 +705,16 @@ function IDETerminal({ code, isActive, title }) {
       </div>
     </div>
   );
+
+  if (isMaximized) {
+    return (
+      <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm p-4 flex flex-col">
+        {terminalContent}
+      </div>
+    );
+  }
+
+  return terminalContent;
 }
 
 // ─── Tool Card Component ─────────────────────────────────────────────────────
@@ -722,7 +724,7 @@ function ToolCard({ tool, isSelected, onClick, index }) {
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
       onClick={onClick}
-      className={`w-full text-left p-4 rounded-[20px] transition-all duration-300 border ${
+      className={`min-w-[180px] lg:min-w-0 w-full text-left p-3 sm:p-4 rounded-[14px] sm:rounded-[20px] transition-all duration-300 border ${
         isSelected
           ? "bg-[#915EFF]/20 border-[#915EFF] shadow-lg shadow-[#915EFF]/10"
           : "bg-tertiary border-transparent hover:border-[#915EFF]/40"
@@ -746,13 +748,26 @@ export default function MCPShowcase() {
   const navigate = useNavigate();
   const [selectedTool, setSelectedTool] = useState(0);
   const [demoActive, setDemoActive] = useState(false);
+  const [selectedPrompt, setSelectedPrompt] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(12);
+  const [isMaximized, setIsMaximized] = useState(false);
 
   const activeTool = mcpTools[selectedTool];
   const isCodeGen = activeTool.id === "code-gen";
 
+  // Use dropdown prompt for code-gen tool
+  const activePrompt = isCodeGen ? codeGenPrompts[selectedPrompt].prompt : activeTool.prompt;
+  const activeCode = isCodeGen ? codeGenPrompts[selectedPrompt].code : activeTool.code;
+
   const handleToolSelect = (index) => {
     setDemoActive(false);
     setSelectedTool(index);
+    setTimeout(() => setDemoActive(true), 100);
+  };
+
+  const handlePromptChange = (index) => {
+    setDemoActive(false);
+    setSelectedPrompt(index);
     setTimeout(() => setDemoActive(true), 100);
   };
 
@@ -773,8 +788,8 @@ export default function MCPShowcase() {
         </Canvas>
       </div>
 
-      {/* Controls hint - fixed bottom left */}
-      <div className="fixed bottom-4 left-4 z-20 flex gap-2 text-[11px] text-white/50 font-mono bg-black/30 backdrop-blur-sm px-3 py-2 rounded-lg">
+      {/* Controls hint - fixed bottom left (hidden on mobile) */}
+      <div className="fixed bottom-4 left-4 z-20 hidden sm:flex gap-2 text-[11px] text-white/50 font-mono bg-black/30 backdrop-blur-sm px-3 py-2 rounded-lg">
         <span className="bg-white/10 px-1.5 py-0.5 rounded">WASD</span>
         <span>move</span>
         <span className="bg-white/10 px-1.5 py-0.5 rounded">SPACE</span>
@@ -786,22 +801,22 @@ export default function MCPShowcase() {
       {/* Content Overlay */}
       <div className="relative z-10">
         {/* Navigation */}
-        <nav className="flex items-center justify-between px-6 sm:px-16 py-5">
+        <nav className="flex items-center justify-between px-4 sm:px-16 py-4">
           <button
             onClick={() => navigate("/")}
-            className="text-white flex items-center gap-2 hover:text-[#915EFF] transition-colors"
+            className="text-white flex items-center gap-2 hover:text-[#915EFF] transition-colors text-[13px] sm:text-[16px]"
           >
-            ← Back to Portfolio
+            ← Back
           </button>
-          <h3 className="text-white font-bold text-[18px]">MCP Server Showcase</h3>
+          <h3 className="text-white font-bold text-[14px] sm:text-[18px]">MCP Server Showcase</h3>
         </nav>
 
         {/* Hero */}
-        <div className="text-center px-6 py-10">
+        <div className="text-center px-4 sm:px-6 py-6 sm:py-10">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-white font-black text-[36px] sm:text-[52px] leading-tight"
+            className="text-white font-black text-[24px] sm:text-[36px] md:text-[52px] leading-tight"
           >
             40+ AI Tools.{" "}
             <span className="text-[#915EFF]">One MCP Server.</span>
@@ -810,7 +825,7 @@ export default function MCPShowcase() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-white/80 text-[16px] mt-4 max-w-2xl mx-auto"
+            className="text-white/80 text-[14px] sm:text-[16px] mt-3 sm:mt-4 max-w-2xl mx-auto"
           >
             Each tool is a specialized AI capability — from generating production code
             to querying knowledge graphs to automating entire workflows.
@@ -819,22 +834,24 @@ export default function MCPShowcase() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 pb-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {/* Tool Selector - Left Panel */}
-            <div className="lg:col-span-3 space-y-3">
-              <h3 className="text-white font-bold text-[14px] uppercase tracking-wider mb-4 px-2">
+        <div className="max-w-7xl mx-auto px-3 sm:px-8 pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
+            {/* Tool Selector - Horizontal scroll on mobile, sidebar on desktop */}
+            <div className="lg:col-span-3">
+              <h3 className="text-white font-bold text-[14px] uppercase tracking-wider mb-3 px-2">
                 Select a Tool
               </h3>
-              {mcpTools.map((tool, index) => (
-                <ToolCard
-                  key={tool.id}
-                  tool={tool}
-                  index={index}
-                  isSelected={selectedTool === index}
-                  onClick={() => handleToolSelect(index)}
-                />
-              ))}
+              <div className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 lg:space-y-3">
+                {mcpTools.map((tool, index) => (
+                  <ToolCard
+                    key={tool.id}
+                    tool={tool}
+                    index={index}
+                    isSelected={selectedTool === index}
+                    onClick={() => handleToolSelect(index)}
+                  />
+                ))}
+              </div>
             </div>
 
             {/* Demo Area - Right Panel */}
@@ -848,47 +865,77 @@ export default function MCPShowcase() {
                   transition={{ duration: 0.3 }}
                 >
                   {/* Tool Description */}
-                  <div className="mb-6">
-                    <h2 className="text-white font-bold text-[24px] mb-2">{activeTool.title}</h2>
-                    <p className="text-white/75 text-[15px] max-w-2xl">
+                  <div className="mb-4 sm:mb-6">
+                    <h2 className="text-white font-bold text-[20px] sm:text-[24px] mb-2">{activeTool.title}</h2>
+                    <p className="text-white/75 text-[13px] sm:text-[15px] max-w-2xl">
                       {activeTool.description}
                     </p>
                   </div>
 
-                  {/* Prompt Box */}
-                  <div className="bg-[#915EFF]/10 border border-[#915EFF]/30 rounded-lg p-4 mb-4">
-                    <div className="text-[#915EFF] text-[12px] font-bold uppercase tracking-wider mb-1">
-                      Prompt
+                  {/* Prompt Box with Dropdown for Code Gen */}
+                  <div className="bg-[#915EFF]/10 border border-[#915EFF]/30 rounded-lg p-3 sm:p-4 mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1">
+                      <div className="text-[#915EFF] text-[12px] font-bold uppercase tracking-wider">
+                        Prompt
+                      </div>
+                      {isCodeGen && (
+                        <select
+                          value={selectedPrompt}
+                          onChange={(e) => handlePromptChange(Number(e.target.value))}
+                          className="bg-[#1e1e1e] text-white text-[12px] border border-[#915EFF]/40 rounded-md px-3 py-1.5 outline-none focus:border-[#915EFF] w-full sm:max-w-[280px]"
+                        >
+                          {codeGenPrompts.map((p, i) => (
+                            <option key={p.id} value={i}>{p.title}</option>
+                          ))}
+                        </select>
+                      )}
                     </div>
-                    <p className="text-white text-[14px] italic">
-                      &ldquo;{activeTool.prompt}&rdquo;
+                    <p className="text-white text-[13px] sm:text-[14px] italic">
+                      &ldquo;{activePrompt}&rdquo;
                     </p>
                   </div>
 
                   {/* IDE Terminal */}
                   <IDETerminal
-                    code={activeTool.code}
+                    code={activeCode}
                     isActive={demoActive}
                     title={`MCP Tool: ${activeTool.title}`}
+                    speed={typingSpeed}
+                    isMaximized={isMaximized}
+                    onToggleMaximize={() => setIsMaximized(!isMaximized)}
                   />
 
-                  {/* Action buttons */}
-                  <div className="flex gap-4 mt-4">
-                    <button
-                      onClick={() => {
-                        setDemoActive(false);
-                        setTimeout(() => setDemoActive(true), 100);
-                      }}
-                      className="bg-[#915EFF] text-white px-6 py-2 rounded-full text-[14px] hover:bg-[#7a4de0] transition-colors"
-                    >
-                      ▶ Replay
-                    </button>
-                    <button
-                      onClick={() => setDemoActive(false)}
-                      className="border border-white/20 text-white px-6 py-2 rounded-full text-[14px] hover:border-[#915EFF] transition-colors"
-                    >
-                      ⏸ Pause
-                    </button>
+                  {/* Action buttons + Speed slider */}
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 mt-4">
+                    <div className="flex gap-3">
+                      <button
+                        onClick={() => {
+                          setDemoActive(false);
+                          setTimeout(() => setDemoActive(true), 100);
+                        }}
+                        className="bg-[#915EFF] text-white px-4 sm:px-6 py-2 rounded-full text-[13px] sm:text-[14px] hover:bg-[#7a4de0] transition-colors"
+                      >
+                        ▶ Replay
+                      </button>
+                      <button
+                        onClick={() => setDemoActive(false)}
+                        className="border border-white/20 text-white px-4 sm:px-6 py-2 rounded-full text-[13px] sm:text-[14px] hover:border-[#915EFF] transition-colors"
+                      >
+                        ⏸ Pause
+                      </button>
+                    </div>
+                    <div className="flex items-center gap-2 sm:ml-auto">
+                      <span className="text-white/50 text-[12px]">Speed</span>
+                      <input
+                        type="range"
+                        min="1"
+                        max="25"
+                        value={26 - typingSpeed}
+                        onChange={(e) => setTypingSpeed(26 - Number(e.target.value))}
+                        className="w-[80px] sm:w-[100px] h-1 accent-[#915EFF] cursor-pointer"
+                      />
+                      <span className="text-white/50 text-[12px] w-6">{Math.round((26 - typingSpeed) / 25 * 100)}%</span>
+                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
