@@ -18,6 +18,7 @@ import Web from "./Web";
 import Game from "./Game";
 import Native from "./Native";
 import Awards from "./Awards";
+import AIEngineering from "./AIEngineering";
 export {
   Hero,
   Navbar,
@@ -37,4 +38,5 @@ export {
   Game,
   Native,
   Awards,
+  AIEngineering,
 };

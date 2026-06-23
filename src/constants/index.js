@@ -85,6 +85,8 @@ import {
   rave_l,
   rave_b,
   rave_rk,
+  rave_sr,
+  rave_sub,
   rave_s,
   rave_sh,
   sprint_1,
@@ -152,6 +154,22 @@ export const info_data = {
       "LN Custom component Development",
     ],
   },
+  AI: {
+    id: "AI Engineering",
+    text: "I design and build AI-powered developer tools that bridge the gap between large language models and enterprise software. My flagship project is a custom MCP (Model Context Protocol) server that transforms how teams interact with ERP documentation, code generation, and business processes — turning months of manual lookup into instant, context-aware AI assistance.",
+    skills: [
+      "MCP Server Development",
+      "LLM Tool Integration",
+      "RAG (Retrieval Augmented Generation)",
+      "Knowledge Graph Construction",
+      "AI Agent Architecture",
+      "Prompt Engineering",
+      "Node.js / JavaScript",
+      "Python",
+      "Vector Search & Embeddings",
+      "DevOps for AI (SSE, HTTPS, PM2)",
+    ],
+  },
   OS: {
     id: "Infor OS Projects",
     text: "Explore some of my work focused on Infor LN ERP and ION integrations. I have hands-on experience in designing and implementing BODs, APIs, workflows, and automation tools tailored to real-world manufacturing and automotive industry use cases. My expertise spans across LN customizations, ION API Gateway, IDM document automation, and integrating third-party systems like PayPal and Proship with LN. These projects demonstrate my ability to build scalable, efficient, and business-aligned ERP solutions that deliver tangible value to clients.",
@@ -183,6 +201,10 @@ export const navLinks = [
     title: "About",
   },
   {
+    id: "ai-engineering",
+    title: "AI",
+  },
+  {
     id: "work",
     title: "Work",
   },
@@ -207,21 +229,26 @@ export const navLinks = [
 const services = [
   {
     id: 1,
+    title: "AI Engineer",
+    icon: backend,
+  },
+  {
+    id: 2,
     title: "LN ERP Technical Consultant",
     icon: infor,
   },
   {
-    id: 2,
+    id: 3,
     title: "Infor OS Consultant",
     icon: infor,
   },
   {
-    id: 3,
+    id: 4,
     title: "Web Developer",
     icon: web,
   },
   {
-    id: 4,
+    id: 5,
     title: "Animation / Graphics",
     icon: creator,
   },
@@ -229,7 +256,7 @@ const services = [
 
 const technologies = [
   {
-    name: "4gl",
+    name: "4GL",
     icon: infor,
   },
   {
@@ -237,19 +264,7 @@ const technologies = [
     icon: infor,
   },
   {
-    name: "Soap APIs",
-    icon: infor,
-  },
-  {
-    name: "IDM",
-    icon: infor,
-  },
-  {
-    name: "IDP",
-    icon: infor,
-  },
-  {
-    name: "Infor RPA",
+    name: "Infor ION",
     icon: infor,
   },
   {
@@ -257,8 +272,16 @@ const technologies = [
     icon: infor,
   },
   {
-    name: "Infor ION",
-    icon: infor,
+    name: "MCP Servers",
+    icon: backend,
+  },
+  {
+    name: "AI Agents",
+    icon: backend,
+  },
+  {
+    name: "Node.js",
+    icon: nodejs,
   },
   {
     name: "JavaScript",
@@ -269,9 +292,24 @@ const technologies = [
     icon: sql,
   },
   {
-    name: "python",
+    name: "Python",
     icon: python,
   },
+];
+
+export const additionalSkills = [
+  "Soap APIs",
+  "IDM",
+  "IDP",
+  "Infor RPA",
+  "RAG / LLMs",
+  "BOD / BDE",
+  "XSLT",
+  "LN Studio",
+  "Docker",
+  "Git",
+  "Prompt Engineering",
+  "Knowledge Graphs",
 ];
 
 const company = [
@@ -589,6 +627,24 @@ const testimonials = [
     company: "Infor India Pvt Ltd",
     email: "Rajashree.kadam@infor.com",
     image: rave_rk,
+  },
+  {
+    testimonial:
+      "Your contribution to LN CD team development using AI (Kiro, AmazonQ) is most appreciated. It makes my productivity better as it helps automate the Designs easier. Thanks a lot!",
+    name: "Subhadra Ivaturi",
+    designation: "Senior Solution Architect",
+    company: "Infor India Pvt Ltd",
+    email: "Subhadra.Ivaturi@infor.com",
+    image: rave_sub,
+  },
+  {
+    testimonial:
+      "I want to give a big shout-out to Prakhar Kumar for his exceptional support on a critical ION API issue. I had been struggling with this problem for nearly a week, and he not only stepped in willingly but also solved it within just one hour. His deep technical expertise, ability to quickly understand the root cause, and clear explanation of the solution made a huge difference. Truly impressive knowledge and collaboration! Thank you for going above and beyond — your help made a significant impact!",
+    name: "Sireesha Bandaru",
+    designation: "Senior Principal Consultant",
+    company: "Infor India Pvt Ltd",
+    email: "Sireesha.Bandaru@infor.com",
+    image: rave_sr,
   },
 ];
 
@@ -1604,6 +1660,111 @@ const contact = [
     url: "https://img.icons8.com/office/40/000000/linkedin.png",
     link: "https://www.linkedin.com/in/prakhar-k-54265493/",
     tag: "prakhar-k",
+  },
+];
+
+export const aiProjects = [
+  {
+    id: 1,
+    title: "4GL Docs MCP Server",
+    description:
+      "Built a production-grade Model Context Protocol (MCP) server from scratch that serves as an AI-powered knowledge layer for Infor LN 4GL development. The server provides 40+ specialized tools to AI agents — including code generation, documentation retrieval, knowledge graph queries, code tree visualization, public interface search, and automated document generation.",
+    points: [
+      "Architected multi-transport support (stdio + SSE) for local and remote deployment",
+      "Implemented device-based authentication with Azure AD integration and GitLab registry",
+      "Built RAG pipeline with vector embeddings for semantic search across 600+ documentation files",
+      "Designed a knowledge graph (610 nodes) mapping relationships between 4GL concepts",
+      "Created automated document generators for DES-020, ANA-050, and TES-070 templates",
+      "Developed LN Studio workspace integration for reading/writing/generating components",
+      "Built code tree parser that visualizes call hierarchies across multi-file 4GL projects",
+      "Integrated LN Extension Modeler automation via Chrome extension bridge",
+      "Implemented HLE effort estimation engine using industry norms",
+      "Deployed via PM2 with HTTPS, auto-renewal certs, and health monitoring",
+    ],
+    tags: [
+      { name: "Node.js", color: "blue-text-gradient" },
+      { name: "MCP Protocol", color: "green-text-gradient" },
+      { name: "RAG", color: "pink-text-gradient" },
+      { name: "Knowledge Graph", color: "orange-text-gradient" },
+      { name: "SSE Transport", color: "blue-text-gradient" },
+    ],
+  },
+  {
+    id: 2,
+    title: "AI-Powered Code Generation Engine",
+    description:
+      "Developed intelligent code generation pipelines that produce production-ready 4GL code for DAL layers, REST APIs, session extensions, and table operations — guided by loaded documentation context and code review checklists.",
+    points: [
+      "Template-based code generators for DAL, REST API, and session scaffolding",
+      "Context-aware generation using loaded core rules and naming conventions",
+      "Automated code review with topic-specific checklists (DAL, DLL, UI, API pipelines)",
+      "BOD/BDE generator from JSON/CSV field definitions with table auto-fetch",
+      "Report Designer with JSON schema builder and metadata generation",
+    ],
+    tags: [
+      { name: "Code Generation", color: "blue-text-gradient" },
+      { name: "4GL", color: "green-text-gradient" },
+      { name: "DAL", color: "pink-text-gradient" },
+      { name: "Automation", color: "orange-text-gradient" },
+    ],
+  },
+  {
+    id: 3,
+    title: "Enterprise Document Intelligence",
+    description:
+      "Built document parsing and generation pipelines that convert design documents, transcripts, and analysis specs into structured data — and vice versa — enabling AI-driven documentation workflows.",
+    points: [
+      "DOCX parser that extracts structured data from DES-020 design documents",
+      "ANA-050 parser for functional/technical analysis documents",
+      "Transcript-to-ANA converter (meeting recordings → structured analysis)",
+      "Template populator generating .docx from JSON using custom XML manipulation",
+      "Video-to-transcript pipeline using local Whisper AI model",
+      "PMC Solution Export generator for deployment packages",
+    ],
+    tags: [
+      { name: "Document AI", color: "blue-text-gradient" },
+      { name: "Whisper", color: "green-text-gradient" },
+      { name: "NLP", color: "pink-text-gradient" },
+      { name: "XML/DOCX", color: "orange-text-gradient" },
+    ],
+  },
+  {
+    id: 4,
+    title: "LN API & Integration Intelligence Layer",
+    description:
+      "Created an intelligent API discovery and execution layer that searches, retrieves swagger specs, and calls LN ION APIs, SOAP services, and OData endpoints — all through natural language queries.",
+    points: [
+      "API Gateway search with automatic swagger caching and on-demand loading",
+      "SOAP WSDL discovery and direct service invocation from AI agents",
+      "OData function discovery and call execution for LN entities",
+      "Public Interface search across all LN modules with PDF parsing",
+      "Business Process documentation with session help and label/message search",
+    ],
+    tags: [
+      { name: "ION API", color: "blue-text-gradient" },
+      { name: "SOAP/REST", color: "green-text-gradient" },
+      { name: "OData", color: "pink-text-gradient" },
+      { name: "API Discovery", color: "orange-text-gradient" },
+    ],
+  },
+  {
+    id: 5,
+    title: "Backend-as-a-Service (BaaS) MCP Deployment",
+    description:
+      "Deployed the MCP server as a cloud-hosted Backend-as-a-Service using Infor ION API Gateway, enabling team-wide access to AI documentation tools through a centralized, secure, always-on endpoint.",
+    points: [
+      "Deployed on ION API Gateway with custom REST endpoints",
+      "Multi-tenant support for simultaneous team access",
+      "Admin panel for device management, token encryption, and access control",
+      "Auto-update mechanism checking GitLab for newer server versions",
+      "Data migration tools with MUU template generation from Excel",
+    ],
+    tags: [
+      { name: "BaaS", color: "blue-text-gradient" },
+      { name: "Cloud Deploy", color: "green-text-gradient" },
+      { name: "ION Gateway", color: "pink-text-gradient" },
+      { name: "DevOps", color: "orange-text-gradient" },
+    ],
   },
 ];
 

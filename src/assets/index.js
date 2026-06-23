@@ -99,6 +99,8 @@ import rave_s from "./feedback/Rave_Samatha.png";
 import rave_b from "./feedback/Rave_Balaji.png";
 import rave_sh from "./feedback/Rave_Shanta.png";
 import rave_rk from "./feedback/Rave_RK.png";
+import rave_sr from "./feedback/Rave_Sreesha.png";
+import rave_sub from "./feedback/Rave_Subhadra.png";
 import sprint_1 from "./award/sprinter.png";
 import sprint_2 from "./award/sprinter2.png";
 import champ1 from "./award/champ.png";
@@ -211,6 +213,8 @@ export {
   rave_l,
   rave_b,
   rave_rk,
+  rave_sr,
+  rave_sub,
   rave_s,
   rave_sh,
   sprint_1,
