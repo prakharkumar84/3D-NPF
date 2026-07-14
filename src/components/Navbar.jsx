@@ -43,10 +43,23 @@ const Navbar = () => {
           }}
         >
           <img src={pklogo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex ">
-            Prakhar Kumar &nbsp;
-            <span className="sm:block hidden"> | Developer</span>
-          </p>
+          <div className="flex flex-col">
+            <p className="text-white text-[18px] font-bold cursor-pointer flex ">
+              Prakhar Kumar &nbsp;
+              <span className="sm:block hidden"> | Developer</span>
+            </p>
+            <div className="hidden sm:flex flex-row gap-4 text-secondary text-[12px]">
+              <a href="mailto:prakhar.kumar@infor.com" className="flex items-center gap-1 hover:text-white transition-colors">
+                📧 prakharsingh.singh5@gmail.com
+              </a>
+              <a href="tel:+917905671093" className="flex items-center gap-1 hover:text-white transition-colors">
+                📱 +91-7905671093
+              </a>
+              <span className="flex items-center gap-1">
+                📍 Hyderabad, Telangana
+              </span>
+            </div>
+          </div>
         </Link>
 
         <ul className="list-none hidden lg:flex flex-row gap-6">
