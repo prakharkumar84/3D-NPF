@@ -105,6 +105,7 @@ import sprint_1 from "./award/sprinter.png";
 import sprint_2 from "./award/sprinter2.png";
 import champ1 from "./award/champ.png";
 import champ2 from "./award/champ1.png";
+import GuruPNG from "./award/GuruPNG.png";
 import aml from "./projects/aml.png";
 import bluebird from "./projects/bluebird.png";
 import boskalis from "./projects/Boskalis.png";
@@ -233,4 +234,5 @@ export {
   Escatec,
   inglass,
   Packsize,
+  GuruPNG,
 };
