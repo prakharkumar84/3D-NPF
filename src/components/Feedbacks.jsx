@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
-import { testimonials as fallbackTestimonials } from "../constants";
-import { loadSectionData } from "../utils/dataLoader";
+import { testimonials } from "../constants";
 
 const FeedbackCard = ({
   index,
@@ -74,14 +73,6 @@ const FeedbackCard = ({
 };
 
 const Feedbacks = () => {
-  const [testimonials, setTestimonials] = useState(fallbackTestimonials);
-
-  useEffect(() => {
-    loadSectionData("testimonials").then((data) => {
-      if (data) setTestimonials(data);
-    });
-  }, []);
-
   return (
     <div className={`mt-12 bg-black-100 rounded-[20px]`}>
       <div

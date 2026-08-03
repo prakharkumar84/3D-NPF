@@ -18,23 +18,20 @@ class GitHubService {
       throw new Error(`GitHub API error: ${res.status}`);
     }
     const data = await res.json();
-    return {
-      content: atob(data.content),
-      sha: data.sha,
-    };
+    const decoded = decodeURIComponent(
+      escape(atob(data.content.replace(/\n/g, "")))
+    );
+    return { content: decoded, sha: data.sha };
   }
 
   async updateFile(path, content, message) {
-    // Get current file SHA
     const existing = await this.getFile(path);
     const body = {
       message: message || `Update ${path} via Admin Panel`,
       content: btoa(unescape(encodeURIComponent(content))),
       branch: BRANCH,
     };
-    if (existing) {
-      body.sha = existing.sha;
-    }
+    if (existing) body.sha = existing.sha;
 
     const res = await fetch(`${this.baseUrl}/contents/${path}`, {
       method: "PUT",
@@ -52,14 +49,13 @@ class GitHubService {
     return await res.json();
   }
 
-  async uploadImage(file, folder = "public/data/images") {
+  async uploadImage(file, folder = "src/assets") {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = async () => {
         try {
           const base64 = reader.result.split(",")[1];
           const path = `${folder}/${file.name}`;
-
           const existing = await this.getFile(path);
           const body = {
             message: `Upload image: ${file.name}`,
@@ -76,13 +72,11 @@ class GitHubService {
             },
             body: JSON.stringify(body),
           });
-
           if (!res.ok) {
             const err = await res.json();
             throw new Error(err.message);
           }
-
-          resolve(`/data/images/${file.name}`);
+          resolve(file.name);
         } catch (err) {
           reject(err);
         }
@@ -90,11 +84,6 @@ class GitHubService {
       reader.onerror = reject;
       reader.readAsDataURL(file);
     });
-  }
-
-  async triggerDeploy() {
-    // Netlify auto-deploys on push, no extra trigger needed
-    return true;
   }
 }
 
