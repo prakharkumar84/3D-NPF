@@ -1,0 +1,58 @@
+[
+  {
+    "testimonial": "Prakhar has excellent technical knowledge. He is quick in his tasks, never keeps us wait. Good attitude w.r.t work and colleagues.",
+    "name": "Samatha Daduwai",
+    "designation": "Principal Consultant",
+    "company": "Infor India Pvt Ltd",
+    "email": "Samatha.Daduwai@infor.com",
+    "image": "/data/images/rave_s.png"
+  },
+  {
+    "testimonial": "Prakhar has done a great job with the Boskalis IDM migration activity. When Boskalis came up with changes on top of huge number of migrated documents, he was able to come up with a solution to update, which is faster than the standard import utility. He has displayed good communication skills during the project. It was a pleasure working with Prakhar.",
+    "name": "Shantaram Yadathore",
+    "designation": "Solution Architect",
+    "company": "Infor India Pvt Ltd",
+    "email": "Shantaram.Yadathore@infor.com",
+    "image": "/data/images/rave_sh.png"
+  },
+  {
+    "testimonial": "Prakhar did a fantastic job in CMR by developing a python script in a short time and helping the customer in a challenging situation.",
+    "name": "Lavanya Tanikella",
+    "designation": "Team Lead, Consulting",
+    "company": "Infor India Pvt Ltd",
+    "email": "Lavanya.Tanikella@infor.com",
+    "image": "/data/images/rave_l.png"
+  },
+  {
+    "testimonial": "Prakhar deserves a recognition for taking ownership of the deliverables he handled across multiple projects PI, Canam, Keystone etc Apart from possessing a sound knowledge in different areas, he finishes his deliverables faster (within the time allotted) with very good quality and takes it to a logical end. He also analyses well and does good R&D in new areas.",
+    "name": "Balaji Padmanabhan",
+    "designation": "Solution Architect",
+    "company": "Infor India Pvt Ltd",
+    "email": "Balaji.Padmanabhan@infor.com",
+    "image": "/data/images/rave_b.png"
+  },
+  {
+    "testimonial": "Hi Prakhar, I wanted to take a moment to express my sincere appreciation for the excellent job you are doing on the Igus US project. Your dedication, hard work, and attention to detail have truly been exceptional, and have made a significant contribution towards the success of the project.",
+    "name": "Rajashree Kadam",
+    "designation": "Project Manager",
+    "company": "Infor India Pvt Ltd",
+    "email": "Rajashree.kadam@infor.com",
+    "image": "/data/images/rave_rk.png"
+  },
+  {
+    "testimonial": "Your contribution to LN CD team development using AI (Kiro, AmazonQ) is most appreciated. It makes my productivity better as it helps automate the Designs easier. Thanks a lot!",
+    "name": "Subhadra Ivaturi",
+    "designation": "Senior Solution Architect",
+    "company": "Infor India Pvt Ltd",
+    "email": "Subhadra.Ivaturi@infor.com",
+    "image": "/data/images/rave_sub.png"
+  },
+  {
+    "testimonial": "I want to give a big shout-out to Prakhar Kumar for his exceptional support on a critical ION API issue. I had been struggling with this problem for nearly a week, and he not only stepped in willingly but also solved it within just one hour.",
+    "name": "Sireesha Bandaru",
+    "designation": "Senior Principal Consultant",
+    "company": "Infor India Pvt Ltd",
+    "email": "Sireesha.Bandaru@infor.com",
+    "image": "/data/images/rave_sr.png"
+  }
+]

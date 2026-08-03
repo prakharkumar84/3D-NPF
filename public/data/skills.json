@@ -1,0 +1,28 @@
+{
+  "technologies": [
+    { "name": "4GL" },
+    { "name": "Rest APIs" },
+    { "name": "Infor ION" },
+    { "name": "API Gateway" },
+    { "name": "MCP Servers" },
+    { "name": "AI Agents" },
+    { "name": "Node.js" },
+    { "name": "JavaScript" },
+    { "name": "SQL" },
+    { "name": "Python" }
+  ],
+  "additionalSkills": [
+    "Soap APIs",
+    "IDM",
+    "IDP",
+    "Infor RPA",
+    "RAG / LLMs",
+    "BOD / BDE",
+    "XSLT",
+    "LN Studio",
+    "Docker",
+    "Git",
+    "Prompt Engineering",
+    "Knowledge Graphs"
+  ]
+}

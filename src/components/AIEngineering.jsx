@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
-import { info_data, aiProjects } from "../constants";
+import { info_data, aiProjects as fallbackAiProjects } from "../constants";
+import { loadSectionData } from "../utils/dataLoader";
 
 const AIProjectCard = ({ index, title, description, points, tags }) => (
   <motion.div
@@ -50,6 +52,14 @@ const AIProjectCard = ({ index, title, description, points, tags }) => (
 );
 
 const AIEngineering = () => {
+  const [aiProjects, setAiProjects] = useState(fallbackAiProjects);
+
+  useEffect(() => {
+    loadSectionData("aiProjects").then((data) => {
+      if (data) setAiProjects(data);
+    });
+  }, []);
+
   return (
     <>
       <motion.div variants={textVariant()}>

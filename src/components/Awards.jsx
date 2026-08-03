@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
-import { awards } from "../constants";
+import { awards as fallbackAwards } from "../constants";
+import { loadSectionData } from "../utils/dataLoader";
 
 const Award = ({ index, category, image }) => {
   const [showModal, setShowModal] = useState(false);
@@ -61,6 +62,14 @@ const Award = ({ index, category, image }) => {
 };
 
 const Awards = () => {
+  const [awards, setAwards] = useState(fallbackAwards);
+
+  useEffect(() => {
+    loadSectionData("awards").then((data) => {
+      if (data) setAwards(data);
+    });
+  }, []);
+
   return (
     <div className={`mt-12 bg-black-100 rounded-[20px]`}>
       <div

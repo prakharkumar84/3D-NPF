@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Car Rent",
+    "description": "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+    "tags": [
+      { "name": "react", "color": "blue-text-gradient" },
+      { "name": "reactstrap", "color": "green-text-gradient" },
+      { "name": "bootstrap", "color": "pink-text-gradient" }
+    ],
+    "image": "/data/images/carRental.png",
+    "source_code_link": "https://car-rental-kt8164f1f-prakhar-kumars-projects.vercel.app"
+  },
+  {
+    "name": "Portfolio",
+    "description": "Collection of an individual's best work samples and achievements, often used to showcase skills and experience to potential employers or clients.",
+    "tags": [
+      { "name": "react", "color": "blue-text-gradient" },
+      { "name": "threejs", "color": "green-text-gradient" },
+      { "name": "tailwind css", "color": "pink-text-gradient" }
+    ],
+    "image": "/data/images/portfolio.png",
+    "source_code_link": "https://prakhar-portfolio-84.netlify.app/"
+  },
+  {
+    "name": "Amazon Clone",
+    "description": "Deals with add to cart, remove from cart, business logic to calculate orders and proceed to checkout. Created to look like original amazon website.",
+    "tags": [
+      { "name": "Reactjs", "color": "blue-text-gradient" },
+      { "name": "html", "color": "green-text-gradient" },
+      { "name": "css", "color": "pink-text-gradient" }
+    ],
+    "image": "/data/images/amazonclone.png",
+    "source_code_link": "https://checkout-functionality.vercel.app/"
+  }
+]

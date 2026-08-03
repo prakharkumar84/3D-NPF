@@ -24,6 +24,7 @@ const Web = lazy(() => import("./components/Web"));
 const Native = lazy(() => import("./components/Native"));
 const Game = lazy(() => import("./components/Game"));
 const MCPShowcase = lazy(() => import("./components/MCPShowcase"));
+const AdminPage = lazy(() => import("./components/admin/AdminPage"));
 
 const SectionFallback = () => (
   <div className="w-full h-32 flex items-center justify-center">
@@ -84,6 +85,14 @@ function App() {
           element={
             <Suspense fallback={<SectionFallback />}>
               <MCPShowcase />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <Suspense fallback={<SectionFallback />}>
+              <AdminPage />
             </Suspense>
           }
         />
