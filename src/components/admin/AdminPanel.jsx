@@ -5,6 +5,7 @@ import AwardsEditor from "./editors/AwardsEditor";
 import SkillsEditor from "./editors/SkillsEditor";
 import ProjectsEditor from "./editors/ProjectsEditor";
 import AIProjectsEditor from "./editors/AIProjectsEditor";
+import UsersEditor from "./editors/UsersEditor";
 
 const SECTIONS = [
   { key: "testimonials", label: "Testimonials", file: "src/data/testimonials.json" },
@@ -12,9 +13,10 @@ const SECTIONS = [
   { key: "skills", label: "Skills & Technologies", file: "src/data/skills.json" },
   { key: "projects", label: "Projects", file: "src/data/projects.json" },
   { key: "aiProjects", label: "AI Engineering", file: "src/data/aiProjects.json" },
+  { key: "users", label: "Manage Users", file: "src/data/users.json" },
 ];
 
-const AdminPanel = ({ token, onLogout }) => {
+const AdminPanel = ({ token, user, onLogout }) => {
   const [github] = useState(() => new GitHubService(token));
   const [activeSection, setActiveSection] = useState("testimonials");
   const [data, setData] = useState({});
@@ -281,6 +283,27 @@ const AdminPanel = ({ token, onLogout }) => {
             }
             onRemove={(i) => removeItem("aiProjects", i)}
           />
+        )}
+
+        {activeSection === "users" && user.role === "admin" && (
+          <UsersEditor
+            items={data.users || []}
+            onUpdate={(i, f, v) => updateItem("users", i, f, v)}
+            onAdd={() =>
+              addItem("users", {
+                username: "",
+                password: "",
+                role: "editor",
+              })
+            }
+            onRemove={(i) => removeItem("users", i)}
+          />
+        )}
+
+        {activeSection === "users" && user.role !== "admin" && (
+          <div className="text-red-400 text-center py-8">
+            Only admin users can manage other users.
+          </div>
         )}
       </main>
     </div>
