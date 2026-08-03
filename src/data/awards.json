@@ -1,6 +1,27 @@
 [
-  { "id": 1, "category": "Sprinter", "image": "sprint_1" },
-  { "id": 2, "category": "Sprinter", "image": "sprint_2" },
-  { "id": 3, "category": "Champion", "image": "champ1" },
-  { "id": 4, "category": "Champion", "image": "champ2" }
+  {
+    "id": 1,
+    "category": "Sprinter",
+    "image": "sprint_1"
+  },
+  {
+    "id": 2,
+    "category": "Sprinter",
+    "image": "sprint_2"
+  },
+  {
+    "id": 3,
+    "category": "Champion",
+    "image": "champ1"
+  },
+  {
+    "id": 4,
+    "category": "Champion",
+    "image": "champ2"
+  },
+  {
+    "id": 1785755012049,
+    "category": "GDS Guru",
+    "image": ""
+  }
 ]
