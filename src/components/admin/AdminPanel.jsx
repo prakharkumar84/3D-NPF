@@ -7,11 +7,11 @@ import ProjectsEditor from "./editors/ProjectsEditor";
 import AIProjectsEditor from "./editors/AIProjectsEditor";
 
 const SECTIONS = [
-  { key: "testimonials", label: "Testimonials", file: "public/data/testimonials.json" },
-  { key: "awards", label: "Awards", file: "public/data/awards.json" },
-  { key: "skills", label: "Skills & Technologies", file: "public/data/skills.json" },
-  { key: "projects", label: "Projects", file: "public/data/projects.json" },
-  { key: "aiProjects", label: "AI Engineering", file: "public/data/aiProjects.json" },
+  { key: "testimonials", label: "Testimonials", file: "src/data/testimonials.json" },
+  { key: "awards", label: "Awards", file: "src/data/awards.json" },
+  { key: "skills", label: "Skills & Technologies", file: "src/data/skills.json" },
+  { key: "projects", label: "Projects", file: "src/data/projects.json" },
+  { key: "aiProjects", label: "AI Engineering", file: "src/data/aiProjects.json" },
 ];
 
 const AdminPanel = ({ token, onLogout }) => {
@@ -97,9 +97,45 @@ const AdminPanel = ({ token, onLogout }) => {
   const handleImageUpload = async (key, index, field, file) => {
     try {
       setStatus("Uploading image...");
-      const url = await github.uploadImage(file);
-      updateItem(key, index, field, url);
-      setStatus("✅ Image uploaded!");
+      // Determine subfolder based on section
+      const folderMap = {
+        testimonials: "src/assets/feedback",
+        awards: "src/assets/award",
+        projects: "src/assets/Web",
+        aiProjects: "src/assets",
+      };
+      const folder = folderMap[key] || "src/assets/admin";
+      const imageName = await github.uploadImage(file, folder);
+
+      // Generate a valid JS variable name from filename (remove extension & special chars)
+      const varName = file.name
+        .replace(/\.[^.]+$/, "")
+        .replace(/[^a-zA-Z0-9_]/g, "_");
+
+      // Append import + export to src/assets/index.js
+      const assetsFile = await github.getFile("src/assets/index.js");
+      if (assetsFile) {
+        const subfolder = folder.replace("src/assets/", "./");
+        const importLine = `import ${varName} from "${subfolder}/${file.name}";\n`;
+        
+        // Add import before the first export block
+        let content = assetsFile.content;
+        // Find the "export {" block and add the variable there
+        const exportMatch = content.match(/export\s*\{([^}]*)\}/s);
+        if (exportMatch) {
+          const newExports = exportMatch[1].trimEnd() + `,\n  ${varName},\n`;
+          content = content.replace(exportMatch[0], `export {${newExports}}`);
+        }
+        // Add import before export block
+        const exportIdx = content.lastIndexOf("export {");
+        content = content.slice(0, exportIdx) + importLine + content.slice(exportIdx);
+
+        await github.updateFile("src/assets/index.js", content, `Add image: ${file.name}`);
+      }
+
+      // Update the JSON data with the varName reference
+      updateItem(key, index, field, varName);
+      setStatus(`✅ Image uploaded! Use "${varName}" as the image reference.`);
     } catch (err) {
       setStatus(`❌ Image upload failed: ${err.message}`);
     }

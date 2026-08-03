@@ -108,6 +108,22 @@ import {
 } from "../assets";
 import { i } from "maath/dist/triangle-b62b9067.esm";
 
+// Import editable data from JSON files (admin panel updates these)
+import testimonialsData from "../data/testimonials.json";
+import awardsData from "../data/awards.json";
+import aiProjectsData from "../data/aiProjects.json";
+import projectsData from "../data/projects.json";
+import skillsData from "../data/skills.json";
+
+// Image map: resolves JSON image name strings to actual imported assets
+// When admin uploads a new image, it gets added to assets/index.js exports
+// and to this map via the variable name
+import * as allAssets from "../assets";
+const imageMap = allAssets;
+
+// Helper: resolve image name from JSON to actual asset
+const resolveImage = (name) => imageMap[name] || name;
+
 export const info_data = {
   Animation: {
     id: "Animations",
@@ -254,63 +270,11 @@ const services = [
   },
 ];
 
-const technologies = [
-  {
-    name: "4GL",
-    icon: infor,
-  },
-  {
-    name: "Rest APIs",
-    icon: infor,
-  },
-  {
-    name: "Infor ION",
-    icon: infor,
-  },
-  {
-    name: "API Gateway",
-    icon: infor,
-  },
-  {
-    name: "MCP Servers",
-    icon: backend,
-  },
-  {
-    name: "AI Agents",
-    icon: backend,
-  },
-  {
-    name: "Node.js",
-    icon: nodejs,
-  },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
-  {
-    name: "SQL",
-    icon: sql,
-  },
-  {
-    name: "Python",
-    icon: python,
-  },
-];
+// Technologies - loaded from JSON, icons resolved from imageMap
+const technologies = skillsData.technologies.map((t) => ({ ...t, icon: resolveImage(t.icon) }));
 
-export const additionalSkills = [
-  "Soap APIs",
-  "IDM",
-  "IDP",
-  "Infor RPA",
-  "RAG / LLMs",
-  "BOD / BDE",
-  "XSLT",
-  "LN Studio",
-  "Docker",
-  "Git",
-  "Prompt Engineering",
-  "Knowledge Graphs",
-];
+// Additional Skills - loaded from JSON
+export const additionalSkills = skillsData.additionalSkills;
 
 const company = [
   {
@@ -581,162 +545,14 @@ const experiences = [
   // },
 ];
 
-const testimonials = [
-  {
-    testimonial:
-      "Prakhar has excellent technical knowledge. He is quick in his tasks, never keeps us wait. Good attitude w.r.t work and colleagues.",
-    name: "Samatha Daduwai",
-    designation: "Principal Consultant",
-    company: "Infor India Pvt Ltd",
-    email: "Samatha.Daduwai@infor.com",
-    image: rave_s,
-  },
-  {
-    testimonial:
-      "Prakhar has done a great job with the Boskalis IDM migration activity. When Boskalis came up with changes on top of huge number of migrated documents, he was able to come up with a solution to update, which is faster than the standard import utility. He has displayed good communication skills during the project. It was a pleasure working with Prakhar.After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-    name: "Shantaram Yadathore",
-    designation: "Solution Architect",
-    company: "Infor India Pvt Ltd",
-    email: "Shantaram.Yadathore@infor.com",
-    image: rave_sh,
-  },
-  {
-    testimonial:
-      "Prakhar did a fantastic job in CMR by developing a python script in a short time and helping the customer in a challenging situation.",
-    name: "Lavanya Tanikella",
-    designation: "Team Lead, Consulting",
-    company: "Infor India Pvt Ltd",
-    email: "Lavanya.Tanikella@infor.com",
-    image: rave_l,
-  },
-  {
-    testimonial:
-      "Prakhar deserves a recognition for taking ownership of the deliverables he handled across multiple projects PI, Canam, Keystone etc Apart from possessing a sound knowledge in different areas, he finishes his deliverables faster (within the time allotted) with very good quality and takes it to a logical end. He also analyses well and does good R&D in new areas.",
-    name: "Balaji Padmanabhan",
-    designation: "Solution Architect",
-    company: "Infor India Pvt Ltd",
-    email: "Balaji.Padmanabhan@infor.com",
-    image: rave_b,
-  },
+// Testimonials - loaded from JSON, images resolved from imageMap
+const testimonials = testimonialsData.map((t) => ({ ...t, image: resolveImage(t.image) }));
 
-  {
-    testimonial:
-      "Hi Prakhar, I wanted to take a moment to express my sincere appreciation for the excellent job you are doing on the Igus US project. Your dedication, hard work, and attention to detail have truly been exceptional, and have made a significant contribution towards the success of the project. I have been consistently impressed with your ability to handle the challenges and complexities that have arisen throughout the project. Your willingness to go above and beyond to ensure that everything is done right has been truly invaluable. Your contributions have not gone unnoticed, and I want to thank you for your exceptional work. You have been an integral part of the team and have helped us to achieve our goals. Thank you again for your outstanding performance, and I look forward to continuing to work in the same flow throughout the project. Best regards, Rajashree Kadam Project Manager.",
-    name: "Rajashree Kadam",
-    designation: "Project Manager",
-    company: "Infor India Pvt Ltd",
-    email: "Rajashree.kadam@infor.com",
-    image: rave_rk,
-  },
-  {
-    testimonial:
-      "Your contribution to LN CD team development using AI (Kiro, AmazonQ) is most appreciated. It makes my productivity better as it helps automate the Designs easier. Thanks a lot!",
-    name: "Subhadra Ivaturi",
-    designation: "Senior Solution Architect",
-    company: "Infor India Pvt Ltd",
-    email: "Subhadra.Ivaturi@infor.com",
-    image: rave_sub,
-  },
-  {
-    testimonial:
-      "I want to give a big shout-out to Prakhar Kumar for his exceptional support on a critical ION API issue. I had been struggling with this problem for nearly a week, and he not only stepped in willingly but also solved it within just one hour. His deep technical expertise, ability to quickly understand the root cause, and clear explanation of the solution made a huge difference. Truly impressive knowledge and collaboration! Thank you for going above and beyond — your help made a significant impact!",
-    name: "Sireesha Bandaru",
-    designation: "Senior Principal Consultant",
-    company: "Infor India Pvt Ltd",
-    email: "Sireesha.Bandaru@infor.com",
-    image: rave_sr,
-  },
-];
+// Awards - loaded from JSON, images resolved from imageMap
+export const awards = awardsData.map((a) => ({ ...a, image: resolveImage(a.image) }));
 
-export const awards = [
-  {
-    id: 1,
-    category: "Sprinter",
-    image: sprint_1,
-  },
-  {
-    id: 2,
-    category: "Sprinter",
-    image: sprint_2,
-  },
-  {
-    id: 3,
-
-    category: "Champion",
-    image: champ1,
-  },
-  {
-    id: 4,
-    category: "Champion",
-    image: champ2,
-  },
-];
-const projects = [
-  {
-    name: "Car Rent",
-    description:
-      "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "reactstrap",
-        color: "green-text-gradient",
-      },
-      {
-        name: "bootstrap",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: carRental,
-    source_code_link:
-      "https://car-rental-kt8164f1f-prakhar-kumars-projects.vercel.app",
-  },
-  {
-    name: "Portfolio",
-    description:
-      "collection of an individual's best work samples and achievements, often used to showcase skills and experience to potential employers or clients.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "threejs",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: portfolio,
-    source_code_link: "https://prakhar-portfolio-84.netlify.app/",
-  },
-  {
-    name: "Amazon Clone",
-    description:
-      "Deals with add to cart,remove from cart, business logic to calculate orders and proceed to checkout. Created to look like original amazon website.",
-    tags: [
-      {
-        name: "Reactjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "html",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: amazonclone,
-    source_code_link: "https://checkout-functionality.vercel.app/",
-  },
-];
+// Projects - loaded from JSON, images resolved from imageMap
+const projects = projectsData.map((p) => ({ ...p, image: resolveImage(p.image) }));
 
 const animation = [
   {
@@ -1663,110 +1479,8 @@ const contact = [
   },
 ];
 
-export const aiProjects = [
-  {
-    id: 1,
-    title: "4GL Docs MCP Server",
-    description:
-      "Built a production-grade Model Context Protocol (MCP) server from scratch that serves as an AI-powered knowledge layer for Infor LN 4GL development. The server provides 40+ specialized tools to AI agents — including code generation, documentation retrieval, knowledge graph queries, code tree visualization, public interface search, and automated document generation.",
-    points: [
-      "Architected multi-transport support (stdio + SSE) for local and remote deployment",
-      "Implemented device-based authentication with Azure AD integration and GitLab registry",
-      "Built RAG pipeline with vector embeddings for semantic search across 600+ documentation files",
-      "Designed a knowledge graph (610 nodes) mapping relationships between 4GL concepts",
-      "Created automated document generators for DES-020, ANA-050, and TES-070 templates",
-      "Developed LN Studio workspace integration for reading/writing/generating components",
-      "Built code tree parser that visualizes call hierarchies across multi-file 4GL projects",
-      "Integrated LN Extension Modeler automation via Chrome extension bridge",
-      "Implemented HLE effort estimation engine using industry norms",
-      "Deployed via PM2 with HTTPS, auto-renewal certs, and health monitoring",
-    ],
-    tags: [
-      { name: "Node.js", color: "blue-text-gradient" },
-      { name: "MCP Protocol", color: "green-text-gradient" },
-      { name: "RAG", color: "pink-text-gradient" },
-      { name: "Knowledge Graph", color: "orange-text-gradient" },
-      { name: "SSE Transport", color: "blue-text-gradient" },
-    ],
-  },
-  {
-    id: 2,
-    title: "AI-Powered Code Generation Engine",
-    description:
-      "Developed intelligent code generation pipelines that produce production-ready 4GL code for DAL layers, REST APIs, session extensions, and table operations — guided by loaded documentation context and code review checklists.",
-    points: [
-      "Template-based code generators for DAL, REST API, and session scaffolding",
-      "Context-aware generation using loaded core rules and naming conventions",
-      "Automated code review with topic-specific checklists (DAL, DLL, UI, API pipelines)",
-      "BOD/BDE generator from JSON/CSV field definitions with table auto-fetch",
-      "Report Designer with JSON schema builder and metadata generation",
-    ],
-    tags: [
-      { name: "Code Generation", color: "blue-text-gradient" },
-      { name: "4GL", color: "green-text-gradient" },
-      { name: "DAL", color: "pink-text-gradient" },
-      { name: "Automation", color: "orange-text-gradient" },
-    ],
-  },
-  {
-    id: 3,
-    title: "Enterprise Document Intelligence",
-    description:
-      "Built document parsing and generation pipelines that convert design documents, transcripts, and analysis specs into structured data — and vice versa — enabling AI-driven documentation workflows.",
-    points: [
-      "DOCX parser that extracts structured data from DES-020 design documents",
-      "ANA-050 parser for functional/technical analysis documents",
-      "Transcript-to-ANA converter (meeting recordings → structured analysis)",
-      "Template populator generating .docx from JSON using custom XML manipulation",
-      "Video-to-transcript pipeline using local Whisper AI model",
-      "PMC Solution Export generator for deployment packages",
-    ],
-    tags: [
-      { name: "Document AI", color: "blue-text-gradient" },
-      { name: "Whisper", color: "green-text-gradient" },
-      { name: "NLP", color: "pink-text-gradient" },
-      { name: "XML/DOCX", color: "orange-text-gradient" },
-    ],
-  },
-  {
-    id: 4,
-    title: "LN API & Integration Intelligence Layer",
-    description:
-      "Created an intelligent API discovery and execution layer that searches, retrieves swagger specs, and calls LN ION APIs, SOAP services, and OData endpoints — all through natural language queries.",
-    points: [
-      "API Gateway search with automatic swagger caching and on-demand loading",
-      "SOAP WSDL discovery and direct service invocation from AI agents",
-      "OData function discovery and call execution for LN entities",
-      "Public Interface search across all LN modules with PDF parsing",
-      "Business Process documentation with session help and label/message search",
-    ],
-    tags: [
-      { name: "ION API", color: "blue-text-gradient" },
-      { name: "SOAP/REST", color: "green-text-gradient" },
-      { name: "OData", color: "pink-text-gradient" },
-      { name: "API Discovery", color: "orange-text-gradient" },
-    ],
-  },
-  {
-    id: 5,
-    title: "Backend-as-a-Service (BaaS) MCP Deployment",
-    description:
-      "Deployed the MCP server as a cloud-hosted Backend-as-a-Service using Infor ION API Gateway, enabling team-wide access to AI documentation tools through a centralized, secure, always-on endpoint.",
-    points: [
-      "Deployed on ION API Gateway with custom REST endpoints",
-      "Multi-tenant support for simultaneous team access",
-      "Admin panel for device management, token encryption, and access control",
-      "Auto-update mechanism checking GitLab for newer server versions",
-      "Data migration tools with MUU template generation from Excel",
-    ],
-    tags: [
-      { name: "BaaS", color: "blue-text-gradient" },
-      { name: "Cloud Deploy", color: "green-text-gradient" },
-      { name: "ION Gateway", color: "pink-text-gradient" },
-      { name: "DevOps", color: "orange-text-gradient" },
-    ],
-  },
-];
+// AI Projects - loaded from JSON
+export const aiProjects = aiProjectsData;
 
 export {
   contact,

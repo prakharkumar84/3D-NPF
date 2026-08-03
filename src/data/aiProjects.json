@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "4GL Docs MCP Server",
-    "description": "Built a production-grade Model Context Protocol (MCP) server from scratch that serves as an AI-powered knowledge layer for Infor LN 4GL development. The server provides 40+ specialized tools to AI agents.",
+    "description": "Built a production-grade Model Context Protocol (MCP) server from scratch that serves as an AI-powered knowledge layer for Infor LN 4GL development. The server provides 40+ specialized tools to AI agents — including code generation, documentation retrieval, knowledge graph queries, code tree visualization, public interface search, and automated document generation.",
     "points": [
       "Architected multi-transport support (stdio + SSE) for local and remote deployment",
       "Implemented device-based authentication with Azure AD integration and GitLab registry",
@@ -26,7 +26,7 @@
   {
     "id": 2,
     "title": "AI-Powered Code Generation Engine",
-    "description": "Developed intelligent code generation pipelines that produce production-ready 4GL code for DAL layers, REST APIs, session extensions, and table operations.",
+    "description": "Developed intelligent code generation pipelines that produce production-ready 4GL code for DAL layers, REST APIs, session extensions, and table operations — guided by loaded documentation context and code review checklists.",
     "points": [
       "Template-based code generators for DAL, REST API, and session scaffolding",
       "Context-aware generation using loaded core rules and naming conventions",
@@ -44,7 +44,7 @@
   {
     "id": 3,
     "title": "Enterprise Document Intelligence",
-    "description": "Built document parsing and generation pipelines that convert design documents, transcripts, and analysis specs into structured data — and vice versa.",
+    "description": "Built document parsing and generation pipelines that convert design documents, transcripts, and analysis specs into structured data — and vice versa — enabling AI-driven documentation workflows.",
     "points": [
       "DOCX parser that extracts structured data from DES-020 design documents",
       "ANA-050 parser for functional/technical analysis documents",
@@ -63,7 +63,7 @@
   {
     "id": 4,
     "title": "LN API & Integration Intelligence Layer",
-    "description": "Created an intelligent API discovery and execution layer that searches, retrieves swagger specs, and calls LN ION APIs, SOAP services, and OData endpoints.",
+    "description": "Created an intelligent API discovery and execution layer that searches, retrieves swagger specs, and calls LN ION APIs, SOAP services, and OData endpoints — all through natural language queries.",
     "points": [
       "API Gateway search with automatic swagger caching and on-demand loading",
       "SOAP WSDL discovery and direct service invocation from AI agents",
@@ -81,7 +81,7 @@
   {
     "id": 5,
     "title": "Backend-as-a-Service (BaaS) MCP Deployment",
-    "description": "Deployed the MCP server as a cloud-hosted Backend-as-a-Service using Infor ION API Gateway, enabling team-wide access to AI documentation tools.",
+    "description": "Deployed the MCP server as a cloud-hosted Backend-as-a-Service using Infor ION API Gateway, enabling team-wide access to AI documentation tools through a centralized, secure, always-on endpoint.",
     "points": [
       "Deployed on ION API Gateway with custom REST endpoints",
       "Multi-tenant support for simultaneous team access",
